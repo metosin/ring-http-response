@@ -6,7 +6,7 @@ Real HTTP Statuses for Ring. Ported from the awesome [Spray](http://spray.io/).
 
 ## Installation
 
-    [metosin/ring-http-response "0.1.0"]
+    [metosin/ring-http-response "0.2.0"]
 
 ## Usage
 

@@ -19,7 +19,7 @@
   (let [type        (merge (get-type status) options)
         entity?     (:entity? type)
         location?   (:location? type)
-        docstring   (str status " " name " (" (:name type) ")\n" "\n\n" description)
+        docstring   (str status " " name " (" (:name type) ")\n\n" description)
         fn-name     (->kebab-case class-name)
         parameters  (cond
                       entity?   ['body]
