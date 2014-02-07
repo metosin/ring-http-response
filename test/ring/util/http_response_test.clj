@@ -79,10 +79,6 @@
     (network-read-timeout "body")                   => {:status 598 :headers {} :body "body"}
     (network-connect-timeout "body")                => {:status 599 :headers {} :body "body"}))
 
-(defn imported-from? [original-ns]
-  (fn [x]
-    (= (-> x meta :ns ns-name) original-ns)))
-
 (facts "vars are imported correctly"
   (doseq [v [#'status
              #'header
@@ -95,4 +91,4 @@
              #'resource-response
              #'get-header]]
     (fact {:midje/description v}
-      v => (imported-from? 'ring.util.response))))
+      (-> v meta :ns ns-name) => 'ring.util.response)))
