@@ -8,6 +8,15 @@ Real HTTP Statuses for Ring
 
     [metosin/ring-http-response "0.1.0"]
 
+## Usage
+
+Check out the [facts](/blob/master/test/ring/util/http_response_test.clj).
+
+## Todo
+
+- make drop-in replacement for `ring.util.response` (which has other usefull stuff too)
+- clean up code generation (already kebab'd function names etc.)
+
 ## License
 
 Copyright © 2014 Metosin Oy
