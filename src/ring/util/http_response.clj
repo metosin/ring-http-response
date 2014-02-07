@@ -1,5 +1,7 @@
 (ns ring.util.http-response
-  (:require [camel-snake-kebab :refer [->kebab-case]]))
+  (:require [camel-snake-kebab :refer [->kebab-case]]
+            [potemkin :refer [import-vars]]
+            ring.util.response))
 
 ;; thanks to https://github.com/spray/spray/blob/master/spray-http/src/main/scala/spray/http/StatusCode.scala
 
@@ -103,3 +105,20 @@
 (defstatus NetworkAuthenticationRequired 511 "Network Authentication Required" "The client needs to authenticate to gain network access.")
 (defstatus NetworkReadTimeout            598 "Network read timeout error" "")
 (defstatus NetworkConnectTimeout         599 "Network connect timeout error" "")
+
+(import-vars
+
+  ;; rest of the public interface at ring.util.response
+  [ring.util.response
+
+   status
+   header
+   file-response
+   content-type
+   charset
+   set-cookie
+   response?
+   url-response
+   resource-response
+   get-header])
+

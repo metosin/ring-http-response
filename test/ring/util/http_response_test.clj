@@ -78,3 +78,21 @@
     (network-authentication-required "body")        => {:status 511 :headers {} :body "body"}
     (network-read-timeout "body")                   => {:status 598 :headers {} :body "body"}
     (network-connect-timeout "body")                => {:status 599 :headers {} :body "body"}))
+
+(defn imported-from? [original-ns]
+  (fn [x]
+    (= (-> x meta :ns ns-name) original-ns)))
+
+(facts "vars are imported correctly"
+  (doseq [v [#'status
+             #'header
+             #'file-response
+             #'content-type
+             #'charset
+             #'set-cookie
+             #'response?
+             #'url-response
+             #'resource-response
+             #'get-header]]
+    (fact {:midje/description v}
+      v => (imported-from? 'ring.util.response))))
