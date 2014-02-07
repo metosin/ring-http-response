@@ -3,7 +3,8 @@
             [potemkin :refer [import-vars]]
             ring.util.response))
 
-;; thanks to https://github.com/spray/spray/blob/master/spray-http/src/main/scala/spray/http/StatusCode.scala
+;; original version: https://github.com/spray/spray/blob/master/spray-http/src/main/scala/spray/http/StatusCode.scala
+;; original Copyright © 2011-2013 the spray project <http://spray.io>
 
 (defrecord StatusType [name entity? location? #_success])
 
