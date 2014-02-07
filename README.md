@@ -10,7 +10,7 @@ Real HTTP Statuses for Ring
 
 ## Usage
 
-Check out the [facts](/master/test/ring/util/http_response_test.clj).
+Check out the [facts](https://github.com/metosin/ring-http-response/blob/master/test/ring/util/http_response_test.clj).
 
 ## Todo
 
