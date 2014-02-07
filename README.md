@@ -1,10 +1,12 @@
 # ring-http-response
 
+[![Build Status](https://travis-ci.org/metosin/ring-http-response.png?branch=master)](https://travis-ci.org/metosin/ring-http-response)
+
 Real HTTP Statuses for Ring
 
 ## Installation
 
-    [metosin/ring-http-status "0.1.0"]
+    [metosin/ring-http-response "0.1.0"]
 
 ## License
 
