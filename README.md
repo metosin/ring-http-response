@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/metosin/ring-http-response.png?branch=master)](https://travis-ci.org/metosin/ring-http-response)
 
-Real HTTP Statuses for Ring
+Real HTTP Statuses for Ring. Ported from the awesome [Spray](http://spray.io/).
 
 ## Installation
 
@@ -11,11 +11,6 @@ Real HTTP Statuses for Ring
 ## Usage
 
 Check out the [facts](https://github.com/metosin/ring-http-response/blob/master/test/ring/util/http_response_test.clj).
-
-## Todo
-
-- make drop-in replacement for `ring.util.response` (which has other usefull stuff too)
-- clean up code generation (already kebab'd function names etc.)
 
 ## License
 
