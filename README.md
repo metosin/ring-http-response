@@ -25,6 +25,8 @@ Check out the [facts](https://github.com/metosin/ring-http-response/blob/master/
 
 ## License
 
+Original [code](https://github.com/spray/spray/blob/master/spray-http/src/main/scala/spray/http/StatusCode.scala): Copyright © 2011-2013 the spray project <http://spray.io>.
+
 Copyright © 2014 Metosin Oy
 
 Distributed under the Eclipse Public License, the same as Clojure.
