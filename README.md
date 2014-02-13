@@ -6,11 +6,17 @@ Real HTTP Statuses for Ring. Ported from the awesome [Spray](http://spray.io/).
 
 ## Installation
 
-    [metosin/ring-http-response "0.2.1"]
-
+    [metosin/ring-http-response "0.3.0"]
+    
 ## Usage
 
 Check out the [facts](https://github.com/metosin/ring-http-response/blob/master/test/ring/util/http_response_test.clj).
+
+## Throwing error responses
+
+Sometimes it's convenient to short-circuit the execution by throwing an exception. All http-responses have a sibling functions with `!`int the end of the name (`not-found` & `not-found!`). These functions [Slingshot](https://github.com/scgilardi/slingshot) the response, which can be caught in a middeware and demoted back to a response.
+
+For this purpose, there is `ring.middleware.http-response/catch-response`. It consumes only http-response-exceptions and by so can be after any other exception-catching middleware. See [facts](https://github.com/metosin/ring-http-response/blob/master/test/ring/middleware/http_response_test.clj).
 
 ## Migrating from ring.util.response
 1. add the dependency
