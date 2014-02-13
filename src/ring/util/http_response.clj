@@ -1,41 +1,46 @@
 (ns ring.util.http-response
   (:require [camel-snake-kebab :refer [->kebab-case]]
             [potemkin :refer [import-vars]]
+            [slingshot.slingshot :refer [throw+]]
             ring.util.response))
 
 ;; original version: https://github.com/spray/spray/blob/master/spray-http/src/main/scala/spray/http/StatusCode.scala
 ;; original Copyright © 2011-2013 the spray project <http://spray.io>
 
-(defrecord StatusType [name entity? location? #_success])
+(defrecord StatusType [name entity? location? success?])
 
 (defn get-type [status]
   (cond
-    (<= 100 status 199) (->StatusType "Informational" false false #_true)
-    (<= 200 status 299) (->StatusType "Success"       true  false #_true)
-    (<= 300 status 399) (->StatusType "Redirection"   false true  #_true)
-    (<= 400 status 499) (->StatusType "ClientError"   true  false #_false)
-    (<= 500 status 599) (->StatusType "ServerError"   true  false #_false)))
+    (<= 100 status 199) (->StatusType "Informational" false false true)
+    (<= 200 status 299) (->StatusType "Success"       true  false true)
+    (<= 300 status 399) (->StatusType "Redirection"   false true  true)
+    (<= 400 status 499) (->StatusType "ClientError"   true  false false)
+    (<= 500 status 599) (->StatusType "ServerError"   true  false false)))
 
 (defmacro defstatus [class-name status name description & [options]]
-  (let [type        (merge (get-type status) options)
-        entity?     (:entity? type)
-        location?   (:location? type)
-        docstring   (str status " " name " (" (:name type) ")\n\n" description)
-        fn-name     (->kebab-case class-name)
-        parameters  (cond
-                      entity?   ['body]
-                      location? ['url]
-                      :else     [])
-        body        (merge
-                      {:status  status
-                       :headers {}
-                       :body    ""}
-                      (cond
-                        entity?   {:body 'body}
-                        location? {:headers {"Location" 'url}
-                                   :body    `(str "<a href=\"" ~'url "\">" ~'url "</a>")}
-                        :else     nil))]
-    `(defn ~fn-name ~docstring ~parameters ~body)))
+  (let [{:keys [name entity? location? success?]} (merge (get-type status) options)
+        docstring (str status " " name " (" name ")\n\n" description)
+        fn-name (->kebab-case class-name)
+        parameters (cond
+                     entity?   ['body]
+                     location? ['url]
+                     :else     [])
+        body (merge
+               {:status  status
+                :headers {}
+                :body    ""}
+               (cond
+                 entity?   {:body 'body}
+                 location? {:headers {"Location" 'url}
+                            :body    `(str "<a href=\"" ~'url "\">" ~'url "</a>")}
+                 :else     nil))]
+    `(do
+       (defn ~fn-name ~docstring ~parameters ~body)
+       ~(if-not success?
+          `(defn ~(symbol (str fn-name "!"))
+                 ~(str docstring "\n\nSlingshota an exception with :type :ring.util.http-response/response and the full response in :response ")
+                 ~parameters
+                 (throw+ {:type ::response :response ~body}))))))
 
 (defstatus Continue                      100 "Continue" "The server has received the request headers and the client should proceed to send the request body.")
 (defstatus SwitchingProtocols            101 "Switching Protocols" "The server is switching protocols because the client requested the switch.")
