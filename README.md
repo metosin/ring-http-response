@@ -4,10 +4,10 @@
 
 Real HTTP Statuses for Ring. Ported from the awesome [Spray](http://spray.io/).
 
-## Installation
+## Latest version
 
-    [metosin/ring-http-response "0.3.0"]
-    
+[![Latest version](https://clojars.org/metosin/ring-http-response/latest-version.svg)](https://clojars.org/metosin/ring-http-response)
+
 ## Usage
 
 Check out the [facts](https://github.com/metosin/ring-http-response/blob/master/test/ring/util/http_response_test.clj).
