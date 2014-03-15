@@ -60,7 +60,7 @@ All erronous http-response functions have a exception throwing sibligs with a ba
 ; ExceptionInfo throw+: {:type :ring.util.http-response/response, :response {:status 400, :headers {}, :body "kosh"}}  ring.util.http-response/throw! (http_response.clj:24)
 ```
 
-There is also a `throw!` function which throws the given response. It can be used when one needs to set also headers etc. for the response
+There is also a `throw!` function which throws the given response.
 
 ```clojure
 (throw! (header (bad-request "body") "header" "value"))
@@ -69,11 +69,9 @@ There is also a `throw!` function which throws the given response. It can be use
 
 ### Catching thrown responses
 
-`ring.middleware.http-response/catch-response` catches all thrown http-respones and returns the throws response.
+`ring.middleware.http-response/catch-response` catches thrown http-respones and returns the throws response. See the [facts](https://github.com/metosin/ring-http-response/blob/master/test/ring/middleware/http_response_test.clj) for more info.
 
- See the [facts](https://github.com/metosin/ring-http-response/blob/master/test/ring/middleware/http_response_test.clj).
-
-### More info
+### Need more info?
 
 Check out the [facts](https://github.com/metosin/ring-http-response/blob/master/test/ring/util/http_response_test.clj).
 
