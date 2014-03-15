@@ -137,7 +137,11 @@
     (network-read-timeout! "body")                  => (slingshots {:status 598 :headers {} :body "body"})
     (network-connect-timeout! "body")               => (slingshots {:status 599 :headers {} :body "body"})))
 
-    (facts "vars are imported correctly"
+(fact "throw!"
+  (throw! (bad-request "body"))                     => (slingshots {:status 400 :headers {} :body "body"})
+  (throw! (header (bad-request "body") "a" "1"))    => (slingshots {:status 400 :headers {"a" "1"} :body "body"}))
+
+(facts "vars are imported correctly"
   (doseq [v [#'status
              #'header
              #'file-response
