@@ -12,7 +12,7 @@ Real HTTP Statuses for Ring. Ported from the awesome [Spray](http://spray.io/).
 
 ## Usage
 
-This library covers most/all of the available (http-statuses)[http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html] as response generating functions. These functions take either a `body`, `url` or no parameter to meet the requirements of the http spec.
+This library covers most/all of the available (http-statuses)[http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html] as response generating functions. These functions take either a `body`, `url` or no parameter in align with the http spec.
 
 Check out the [facts](https://github.com/metosin/ring-http-response/blob/master/test/ring/util/http_response_test.clj).
 
