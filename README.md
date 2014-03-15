@@ -14,8 +14,6 @@ Real HTTP Statuses for Ring. Ported from the awesome [Spray](http://spray.io/).
 
 This library covers most/all of the available [http-statuses](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) as response generating functions. These functions take either a `body`, `url` or no parameter in align with the http spec.
 
-Check out the [facts](https://github.com/metosin/ring-http-response/blob/master/test/ring/util/http_response_test.clj).
-
 ### Returning http responses
 
 ```clojure
@@ -72,6 +70,10 @@ There is also a `throw!` function which throws the given response. It can be use
 ### Managing thrown responses
 
 There is a ready middleware to handle just the thrown responses - `ring.middleware.http-response/catch-response`. See [facts](https://github.com/metosin/ring-http-response/blob/master/test/ring/middleware/http_response_test.clj) for more info.
+
+### More info
+
+Check out the [facts](https://github.com/metosin/ring-http-response/blob/master/test/ring/util/http_response_test.clj).
 
 ## Migrating from ring.util.response
 1. add the dependency
