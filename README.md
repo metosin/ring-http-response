@@ -29,7 +29,7 @@ This library covers most/all of the available [http-statuses](http://www.w3.org/
 ; {:status 302, :headers {"Location" "url"}, :body "<a href=\"url\">url</a>"}
 ```
 
-### documentation
+### Documentation
 
 ```clojure
 (doc temporary-redirect)
@@ -50,7 +50,7 @@ This library covers most/all of the available [http-statuses](http://www.w3.org/
 ```
 ### Throwing error responses
 
-All erronous http-response generating functions have a exception throwing sibligs with a bang in their name (`bad-request` & `bad-request!`). These functions [Slingshot](https://github.com/scgilardi/slingshot) the response, which can be caught in a middeware and demoted back to a response.
+All erronous http-response functions have a exception throwing sibligs with a bang in their name (`bad-request` & `bad-request!`). These functions [Slingshot](https://github.com/scgilardi/slingshot) the response.
 
 ```clojure
 (bad-request "kosh")
@@ -67,9 +67,11 @@ There is also a `throw!` function which throws the given response. It can be use
 ; ExceptionInfo throw+: {:type :ring.util.http-response/response, :response {:status 400, :headers {"header" "value"}, :body "body"}}  ring.util.http-response/throw! (http_response.clj:24)
 ```
 
-### Managing thrown responses
+### Catching thrown responses
 
-There is a ready middleware to handle just the thrown responses - `ring.middleware.http-response/catch-response`. See [facts](https://github.com/metosin/ring-http-response/blob/master/test/ring/middleware/http_response_test.clj) for more info.
+`ring.middleware.http-response/catch-response` catches all thrown http-respones and returns the throws response.
+
+ See the [facts](https://github.com/metosin/ring-http-response/blob/master/test/ring/middleware/http_response_test.clj).
 
 ### More info
 
