@@ -48,9 +48,10 @@ This library covers most/all of the available [http-statuses](http://www.w3.org/
 ;
 ; The request contains bad syntax or cannot be fulfilled.
 ```
+
 ### Throwing error responses
 
-All erronous http-response functions have a exception throwing sibligs with a bang in their name (`bad-request` & `bad-request!`). These functions [Slingshot](https://github.com/scgilardi/slingshot) the response.
+All functions indicating a http error response have a exception throwing siblig with a bang in their name (`bad-request` & `bad-request!`). These functions [Slingshot](https://github.com/scgilardi/slingshot) the response in an exception.
 
 ```clojure
 (bad-request "kosh")
@@ -60,7 +61,7 @@ All erronous http-response functions have a exception throwing sibligs with a ba
 ; ExceptionInfo throw+: {:type :ring.util.http-response/response, :response {:status 400, :headers {}, :body "kosh"}}  ring.util.http-response/throw! (http_response.clj:24)
 ```
 
-There is also a `throw!` function which throws the given response.
+There is also a `throw!` function to slingshot any response in an exception.
 
 ```clojure
 (throw! (header (bad-request "body") "header" "value"))
@@ -69,7 +70,7 @@ There is also a `throw!` function which throws the given response.
 
 ### Catching thrown responses
 
-`ring.middleware.http-response/catch-response` catches thrown http-respones and returns the throws response. See the [facts](https://github.com/metosin/ring-http-response/blob/master/test/ring/middleware/http_response_test.clj) for more info.
+There is a `catch-response` middleware in namespace `ring.middleware.http-response` to catch thrown http-responses and return the responses within. See the [facts](https://github.com/metosin/ring-http-response/blob/master/test/ring/middleware/http_response_test.clj) for more info.
 
 ### Need more info?
 
