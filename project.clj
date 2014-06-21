@@ -5,11 +5,11 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"
             :distribution :repo
             :comments "same as Clojure"}
-  :dependencies [[org.clojure/clojure "1.5.1"]
-                 [ring/ring-core "1.2.2"]
+  :dependencies [[org.clojure/clojure "1.6.0"]
+                 [ring/ring-core "1.3.0"]
                  [slingshot "0.10.3"]
                  [potemkin "0.3.4"]
-                 [camel-snake-kebab "0.1.4"]]
+                 [camel-snake-kebab "0.1.5"]]
   :profiles {:dev {:plugins [[lein-clojars "0.9.1"]
                              [lein-midje "3.1.3"]]
                    :dependencies [[midje "1.6.3"]]}})
