@@ -72,10 +72,6 @@ There is also a `throw!` function to slingshot any response in an exception.
 
 There is a `catch-response` middleware in namespace `ring.middleware.http-response` to catch thrown http-responses and return the responses within. See the [facts](https://github.com/metosin/ring-http-response/blob/master/test/ring/middleware/http_response_test.clj) for more info.
 
-### Need more info?
-
-Check out the [facts](https://github.com/metosin/ring-http-response/blob/master/test/ring/util/http_response_test.clj).
-
 ## Migrating from ring.util.response
 1. add the dependency
 2. change your imports from `ring.util.response` to `ring.util.http-response`
