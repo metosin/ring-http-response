@@ -7,7 +7,7 @@ Real HTTP Statuses for Ring. Ported from the awesome [Spray](http://spray.io/).
 ## Latest version
 
 ```clojure
-[metosin/ring-http-response 0.4.1]
+[metosin/ring-http-response "0.4.1"]
 ```
 
 ## Usage
