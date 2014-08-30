@@ -1,5 +1,5 @@
 (ns ring.util.http-response
-  (:require [camel-snake-kebab :refer [->kebab-case]]
+  (:require [camel-snake-kebab.core :refer [->kebab-case]]
             [potemkin :refer [import-vars]]
             [slingshot.slingshot :refer [throw+]]
             ring.util.response))

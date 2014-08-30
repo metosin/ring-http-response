@@ -1,3 +1,14 @@
+## 0.5.0 (x.8.2014)
+
+- updated dependencies:
+
+```clojure
+[ring/ring-core "1.3.1"]
+[potemkin "0.3.8"]
+[camel-snake-kebab "0.2.4"]
+```
+- Camel\_SNAKE-kebab 0.2.0 renamed the ns camel-snake-kebab to camel-snake-kebab.core
+
 ## 0.4.1 (15.7.2014)
 
 - updated dependencies:
