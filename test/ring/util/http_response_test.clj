@@ -23,14 +23,14 @@
     (im-used "body")                                => {:status 226 :headers {} :body "body"})
 
   (facts "Redirection"
-    (multiple-choices "/url")                       => {:status 300 :headers {"Location" "/url"} :body "<a href=\"/url\">/url</a>"}
-    (moved-permanently "/url")                      => {:status 301 :headers {"Location" "/url"} :body "<a href=\"/url\">/url</a>"}
-    (found "/url")                                  => {:status 302 :headers {"Location" "/url"} :body "<a href=\"/url\">/url</a>"}
-    (see-other "/url")                              => {:status 303 :headers {"Location" "/url"} :body "<a href=\"/url\">/url</a>"}
-    (not-modified "/url")                           => {:status 304 :headers {"Location" "/url"} :body "<a href=\"/url\">/url</a>"}
-    (use-proxy "/url")                              => {:status 305 :headers {"Location" "/url"} :body "<a href=\"/url\">/url</a>"}
-    (temporary-redirect "/url")                     => {:status 307 :headers {"Location" "/url"} :body "<a href=\"/url\">/url</a>"}
-    (permanent-redirect "/url")                     => {:status 308 :headers {"Location" "/url"} :body "<a href=\"/url\">/url</a>"})
+    (multiple-choices "/url")                       => {:status 300 :headers {"Location" "/url"} :body ""}
+    (moved-permanently "/url")                      => {:status 301 :headers {"Location" "/url"} :body ""}
+    (found "/url")                                  => {:status 302 :headers {"Location" "/url"} :body ""}
+    (see-other "/url")                              => {:status 303 :headers {"Location" "/url"} :body ""}
+    (not-modified "/url")                           => {:status 304 :headers {"Location" "/url"} :body ""}
+    (use-proxy "/url")                              => {:status 305 :headers {"Location" "/url"} :body ""}
+    (temporary-redirect "/url")                     => {:status 307 :headers {"Location" "/url"} :body ""}
+    (permanent-redirect "/url")                     => {:status 308 :headers {"Location" "/url"} :body ""})
 
   (facts "ClientError"
     (bad-request "body")                            => {:status 400 :headers {} :body "body"}
