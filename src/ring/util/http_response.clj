@@ -37,8 +37,7 @@
                 :body    ""}
                (cond
                  entity?   {:body 'body}
-                 location? {:headers {"Location" 'url}
-                            :body    `(str "<a href=\"" ~'url "\">" ~'url "</a>")}
+                 location? {:headers {"Location" 'url}}
                  :else     nil))]
     `(do
        (defn ~fn-name ~docstring ~parameters ~body)
@@ -133,4 +132,3 @@
    url-response
    resource-response
    get-header])
-
