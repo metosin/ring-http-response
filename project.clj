@@ -1,4 +1,4 @@
-(defproject metosin/ring-http-response "0.5.0"
+(defproject metosin/ring-http-response "0.5.1"
   :description "Real HTTP Statuses for Ring"
   :url "https://github.com/metosin/ring-http-response"
   :license {:name "Eclipse Public License"
@@ -7,8 +7,8 @@
             :comments "same as Clojure"}
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [ring/ring-core "1.3.1"]
-                 [slingshot "0.10.3"]
-                 [potemkin "0.3.8"]
+                 [slingshot "0.11.0"]
+                 [potemkin "0.3.9"]
                  [camel-snake-kebab "0.2.4"]]
   :profiles {:dev {:plugins [[lein-clojars "0.9.1"]
                              [lein-midje "3.1.3"]]

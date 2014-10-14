@@ -1,3 +1,13 @@
+## 0.5.1 (14.10.2014)
+
+- Remove body from redirect responses (#4), thanks to [Joe Littlejohn](https://github.com/joelittlejohn).
+- updated dependencies:
+
+```clojure
+[slingshot "0.11.0"] is available but we use "0.10.3"
+[potemkin "0.3.9"] is available but we use "0.3.8"
+```
+
 ## 0.5.0 (4.9.2014)
 
 - updated dependencies:
