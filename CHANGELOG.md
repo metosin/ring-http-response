@@ -1,3 +1,7 @@
+## 0.5.2 (11.11.2014)
+
+- use `[org.tobereplaced/lettercase "1.0.0"]` for camel-casing
+
 ## 0.5.1 (14.10.2014)
 
 - Remove body from redirect responses (#4), thanks to [Joe Littlejohn](https://github.com/joelittlejohn).
