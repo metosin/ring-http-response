@@ -1,5 +1,5 @@
 (ns ring.util.http-response
-  (:require [camel-snake-kebab.core :refer [->kebab-case]]
+  (:require [org.tobereplaced.lettercase :as lc]
             [potemkin :refer [import-vars]]
             [slingshot.slingshot :refer [throw+]]
             ring.util.response))
@@ -26,7 +26,7 @@
 (defmacro defstatus [class-name status name description & [options]]
   (let [{:keys [name entity? location? success?]} (merge (get-type status) options)
         docstring (str status " " class-name " (" name ")\n\n" description)
-        fn-name (->kebab-case class-name)
+        fn-name (symbol (lc/lower-hyphen-name class-name))
         parameters (cond
                      entity?   ['body]
                      location? ['url]
@@ -45,7 +45,8 @@
           `(defn ~(symbol (str fn-name "!"))
                  ~(str docstring "\n\nSlingshota an exception with :type :ring.util.http-response/response and the full response in :response")
                  ~parameters
-                 (throw! ~body))))))
+                 (throw! ~body)))
+       #'~fn-name)))
 
 (defstatus Continue                      100 "Continue" "The server has received the request headers and the client should proceed to send the request body.")
 (defstatus SwitchingProtocols            101 "Switching Protocols" "The server is switching protocols because the client requested the switch.")

@@ -24,7 +24,7 @@ This library covers most/all of the available [http-statuses](http://www.w3.org/
 ; {:status 200, :headers {}, :body "body"}
 
 (found "url")
-; {:status 302, :headers {"Location" "url"}, :body "<a href=\"url\">url</a>"}
+; {:status 302, :headers {"Location" "url"}, :body ""}
 ```
 
 ### Documentation
