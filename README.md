@@ -1,6 +1,4 @@
-# ring-http-response
-
-[![Build Status](https://travis-ci.org/metosin/ring-http-response.png?branch=master)](https://travis-ci.org/metosin/ring-http-response)
+# ring-http-response [![Build Status](https://travis-ci.org/metosin/ring-http-response.png?branch=master)](https://travis-ci.org/metosin/ring-http-response) [![Dependencies Status](http://jarkeeper.com/metosin/ring-http-response/status.png)](http://jarkeeper.com/metosin/ring-http-response)
 
 Real HTTP Statuses for Ring. Ported from the awesome [Spray](http://spray.io/).
 
