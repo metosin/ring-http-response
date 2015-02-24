@@ -16,7 +16,7 @@
     (accepted "body")                               => {:status 202 :headers {} :body "body"}
     (non-authoritative-information "body")          => {:status 203 :headers {} :body "body"}
     (no-content)                                    => {:status 204 :headers {} :body ""}
-    (reset-content "body")                          => {:status 205 :headers {} :body "body"}
+    (reset-content)                                 => {:status 205 :headers {} :body ""}
     (partial-content "body")                        => {:status 206 :headers {} :body "body"}
     (multi-status "body")                           => {:status 207 :headers {} :body "body"}
     (already-reported "body")                       => {:status 208 :headers {} :body "body"}
@@ -61,7 +61,7 @@
     (too-many-requests "body")                      => {:status 429 :headers {} :body "body"}
     (request-header-fields-too-large "body")        => {:status 431 :headers {} :body "body"}
     (retry-with "body")                             => {:status 449 :headers {} :body "body"}
-    (blocked-by-parental-controls "body")           => {:status 450 :headers {} :body "body"}
+    (blocked-by-windows-parental-controls "body")   => {:status 450 :headers {} :body "body"}
     (unavailable-for-legal-reasons "body")          => {:status 451 :headers {} :body "body"})
 
   (facts "ServerError"
@@ -118,7 +118,7 @@
     (too-many-requests! "body")                     => (slingshots {:status 429 :headers {} :body "body"})
     (request-header-fields-too-large! "body")       => (slingshots {:status 431 :headers {} :body "body"})
     (retry-with! "body")                            => (slingshots {:status 449 :headers {} :body "body"})
-    (blocked-by-parental-controls! "body")          => (slingshots {:status 450 :headers {} :body "body"})
+    (blocked-by-windows-parental-controls! "body")  => (slingshots {:status 450 :headers {} :body "body"})
     (unavailable-for-legal-reasons! "body")         => (slingshots {:status 451 :headers {} :body "body"}))
 
   (facts "ServerError"
@@ -141,7 +141,8 @@
   (throw! (bad-request "body"))                     => (slingshots {:status 400 :headers {} :body "body"})
   (throw! (header (bad-request "body") "a" "1"))    => (slingshots {:status 400 :headers {"a" "1"} :body "body"}))
 
-(facts "vars are imported correctly"
+;; Do we need this? Potemkin is Yet Another Dependency..
+#_(facts "vars are imported correctly"
   (doseq [v [#'status
              #'header
              #'file-response
