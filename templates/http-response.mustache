@@ -1,6 +1,7 @@
 (ns ring.util.http-response
   (:require [slingshot.slingshot :refer [throw+]]
-            [ring.util.response :as import]))
+            [potemkin.namespaces :as p]
+             ring.util.response))
 
 (defn throw!
   "Slingshots an exception with :type :ring.util.http-response/response and the full response in :response"
@@ -29,7 +30,10 @@
      :body body}))
 {{/success?}}
 {{/template}}
-{{#imports}}
 
-(def {{.}} import/{{.}})
-{{/imports}}
+;;
+;; Imported vars from ring.util.response
+;;
+
+(p/import-vars [ring.util.response{{#imports}}
+                  {{{.}}}{{/imports}}])

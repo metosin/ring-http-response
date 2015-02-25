@@ -141,8 +141,7 @@
   (throw! (bad-request "body"))                     => (slingshots {:status 400 :headers {} :body "body"})
   (throw! (header (bad-request "body") "a" "1"))    => (slingshots {:status 400 :headers {"a" "1"} :body "body"}))
 
-;; Do we need this? Potemkin is Yet Another Dependency..
-#_(facts "vars are imported correctly"
+(facts "vars are imported correctly"
   (doseq [v [#'status
              #'header
              #'file-response

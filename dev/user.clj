@@ -1,4 +1,4 @@
-(ns dev
+(ns user
   (:require [org.tobereplaced.lettercase :as lc]
             [stencil.core :as mustache]))
 

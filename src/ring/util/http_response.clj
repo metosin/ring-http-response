@@ -1,6 +1,7 @@
 (ns ring.util.http-response
   (:require [slingshot.slingshot :refer [throw+]]
-            [ring.util.response :as import]))
+            [potemkin.namespaces :as p]
+             ring.util.response))
 
 (defn throw!
   "Slingshots an exception with :type :ring.util.http-response/response and the full response in :response"
@@ -968,22 +969,18 @@
      :headers {}
      :body body}))
 
-(def status import/status)
+;;
+;; Imported vars from ring.util.response
+;;
 
-(def header import/header)
-
-(def file-response import/file-response)
-
-(def content-type import/content-type)
-
-(def charset import/charset)
-
-(def set-cookie import/set-cookie)
-
-(def response? import/response?)
-
-(def url-response import/url-response)
-
-(def resource-response import/resource-response)
-
-(def get-header import/get-header)
+(p/import-vars [ring.util.response
+                  status
+                  header
+                  file-response
+                  content-type
+                  charset
+                  set-cookie
+                  response?
+                  url-response
+                  resource-response
+                  get-header])
