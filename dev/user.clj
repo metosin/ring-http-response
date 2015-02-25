@@ -103,4 +103,7 @@
                                :imports imports}))
   (spit "src/ring/util/http_status.clj"
         (mustache/render-file "http-status.mustache"
+                              {:template template}))
+  (spit "src/ring/util/http_status.cljs"
+        (mustache/render-file "http-status.mustache"
                               {:template template})))
