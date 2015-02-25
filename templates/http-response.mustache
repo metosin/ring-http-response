@@ -13,21 +13,23 @@
 (defn {{fn-name}}
   "{{status}} {{reason}} ({{type}})
   {{description}}"
-  [{{#entity?}}body{{/entity?}}{{#location?}}url{{/location?}}]
-  {:status {{status}}
-   :headers {{#location?}}{"Location" url}{{/location?}}{{^location?}}{}{{/location?}}
-   :body {{#entity?}}body{{/entity?}}{{^entity?}}""{{/entity?}}})
+  {{#entity?}}([] ({{fn-name}} nil))
+  {{/entity?}}([{{#entity?}}body{{/entity?}}{{#location?}}url{{/location?}}]
+   {:status {{status}}
+    :headers {{#location?}}{"Location" url}{{/location?}}{{^location?}}{}{{/location?}}
+    :body {{#entity?}}body{{/entity?}}{{^entity?}}""{{/entity?}}}))
 {{^success?}}
 
 (defn {{fn-name}}!
   "{{status}} {{reason}} ({{type}})
   {{description}}
   Slingshots an exception with :type :ring.util.http-response/response and the full response in :response"
-  [body]
-  (throw!
-    {:status {{status}}
-     :headers {}
-     :body body}))
+  {{#entity?}}([] ({{fn-name}}! nil)){{/entity?}}
+  ([body]
+   (throw!
+     {:status {{status}}
+      :headers {}
+      :body body})))
 {{/success?}}
 {{/template}}
 
