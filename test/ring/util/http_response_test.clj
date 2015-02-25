@@ -83,7 +83,7 @@
 (defn slingshots [expected]
   (throws clojure.lang.ExceptionInfo
     (fn [x]
-      (let [{:keys [response type]} (-> x .getData :object)]
+      (let [{:keys [response type]} (-> x .getData)]
         (and (= type :ring.util.http-response/response)
           (= response expected))))))
 
