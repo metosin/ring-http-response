@@ -1,0 +1,21 @@
+(ns ring.util.http-status)
+{{#template}}
+
+(def {{fn-name}}
+  "..."
+  {{status}})
+
+(defn {{fn-name}}?
+  "Checks weather a response .."
+  [response]
+  {:pre (map? response)}
+  (= (:status response) {{status}}))
+{{/template}}
+
+(def description
+  "Maps status to description"
+  {
+  {{#template}}
+  {{status}} "{{description}}"
+  {{/template}}
+  })
