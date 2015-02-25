@@ -1,4 +1,4 @@
-(defproject metosin/ring-http-response "0.5.2"
+(defproject metosin/ring-http-response "0.6.0-SNAPSHOT"
   :description "Real HTTP Statuses for Ring"
   :url "https://github.com/metosin/ring-http-response"
   :license {:name "Eclipse Public License"
