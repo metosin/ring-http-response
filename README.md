@@ -82,6 +82,6 @@ There is a `catch-response` middleware in namespace `ring.middleware.http-respon
 ## License
 Original [code](https://github.com/spray/spray/blob/master/spray-http/src/main/scala/spray/http/StatusCode.scala): Copyright © 2011-2013 the spray project <http://spray.io>.
 
-Copyright © 2014 Metosin Oy
+Copyright © 2014-2015 [Metosin Oy](http://www.metosin.fi)
 
 Distributed under the Eclipse Public License, the same as Clojure.
