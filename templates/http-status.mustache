@@ -10,10 +10,11 @@
   (= (:status response) {{status}}))
 {{/template}}
 
-(def description
-  "Maps status to description"
+(def statuses
+  "Maps status to name and description"
   {
-  {{#template}}
-  {{status}} "{{description}}"
-  {{/template}}
-  })
+   {{#template}}
+   {{status}} {:name "{{name}}"
+        :description "{{description}}"}
+   {{/template}}
+   })

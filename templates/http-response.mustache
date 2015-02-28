@@ -11,7 +11,7 @@
 {{#template}}
 
 (defn {{fn-name}}
-  "{{status}} {{reason}} ({{type}})
+  "{{status}} {{name}} ({{type}})
   {{description}}"
   {{#entity?}}([] ({{fn-name}} nil))
   {{/entity?}}([{{#entity?}}body{{/entity?}}{{#location?}}url{{/location?}}]
@@ -21,7 +21,7 @@
 {{^success?}}
 
 (defn {{fn-name}}!
-  "{{status}} {{reason}} ({{type}})
+  "{{status}} {{name}} ({{type}})
   {{description}}
   Slingshots an exception with :type :ring.util.http-response/response and the full response in :response"
   {{#entity?}}([] ({{fn-name}}! nil)){{/entity?}}

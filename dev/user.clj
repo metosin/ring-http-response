@@ -81,11 +81,11 @@
     (<= 500 status 599) (->StatusType "ServerError"   true  false false)))
 
 (def template
-  (for [[status reason description options] responses]
+  (for [[status name description options] responses]
     (merge
-     {:fn-name (lc/lower-hyphen-name reason)
+     {:fn-name (lc/lower-hyphen-name name)
       :status status
-      :reason reason
+      :name name
       :description description}
      (get-type status)
      options)))
