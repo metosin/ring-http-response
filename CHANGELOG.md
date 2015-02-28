@@ -4,7 +4,7 @@
   (thanks to [Frankie Sardo](https://github.com/frankiesardo)!)
 - FIXES
   - https://github.com/metosin/ring-http-response/issues/2: new namespace `ring.util.http-status`
-  - https//github.com/metosin/ring-http-response/issues/3: `(user/generate!)`
+  - https://github.com/metosin/ring-http-response/issues/3: `(user/generate!)`
   - https://github.com/metosin/ring-http-response/issues/5: `ring.util.http-predicates` 
 - **Breaking:**:
   - `reset-content` takes no body
