@@ -1,3 +1,25 @@
+## 0.6.0 (28.2.2015)
+
+- move from macro-based compile-time code-generation into mustache-based pre-compile code generation
+  (thanks to [Frankie Sardo](https://github.com/frankiesardo)!)
+- FIXES
+  - https://github.com/metosin/ring-http-response/issues/2: new namespace `ring.util.http-status`
+  - https//github.com/metosin/ring-http-response/issues/3: `(user/generate!)`
+  - https://github.com/metosin/ring-http-response/issues/5: `ring.util.http-predicates` 
+- **Breaking:**:
+  - `reset-content` takes no body
+  - `blocked-by-parental-control` => `blocked-by-windows-parental-controls`
+- removed dependencies:
+```clojure
+[org.tobereplaced/lettercase "1.0.0"]
+```
+- updated dependencies:
+```clojure
+[ring/ring-core "1.3.2"] is available but we use "1.3.1"
+[slingshot "0.12.2"] is available but we use "0.11.0"
+[potemkin "0.3.11"] is available but we use "0.3.9"
+```
+
 ## 0.5.2 (11.11.2014)
 
 - use `[org.tobereplaced/lettercase "1.0.0"]` for camel-casing
