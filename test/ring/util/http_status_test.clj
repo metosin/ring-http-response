@@ -79,3 +79,7 @@
     network-authentication-required        => 511
     network-read-timeout                   => 598
     network-connect-timeout                => 599))
+
+(fact "status"
+  (status 500) => {:name "Internal Server Error"
+                   :description "There was an internal server error."})

@@ -5,10 +5,11 @@
 - FIXES
   - #2 new namespace `ring.util.http-status`
   - #3 `(user/generate!)`
-  - #5 `ring.util.http-predicates` 
-- **Breaking:**:
+  - #5 `ring.util.http-predicates`
+- **Breaking changes:**:
   - `reset-content` takes no body
   - `blocked-by-parental-control` => `blocked-by-windows-parental-controls`
+  - `ring.middleware.http-response/catch-response` => `ring.middleware.http-response/wrap-http-response`
 - removed dependencies:
 ```clojure
 [org.tobereplaced/lettercase "1.0.0"]

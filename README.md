@@ -1,6 +1,7 @@
 # ring-http-response [![Build Status](https://travis-ci.org/metosin/ring-http-response.png?branch=master)](https://travis-ci.org/metosin/ring-http-response) [![Dependencies Status](http://jarkeeper.com/metosin/ring-http-response/status.png)](http://jarkeeper.com/metosin/ring-http-response)
 
-Real HTTP Statuses for Ring. Ported from the awesome [Spray](http://spray.io/).
+Handling real HTTP Statuses with Clojure(Script), originally ported from the awesome [Spray](http://spray.io/).
+Mostly a drop-in-place replacement for `ring.util.response`.
 
 ## Latest version
 
@@ -8,12 +9,12 @@ Real HTTP Statuses for Ring. Ported from the awesome [Spray](http://spray.io/).
 
 ## Usage
 
-This library covers most/all of the available [http-statuses](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) as response generating functions. These functions take either a `body`, `url` or no parameter in align with the http spec.
+### Generating http responses
 
-### Returning http responses
+Functions take either a `body`, `url` or nothing as parameters in align to the [spec](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
 
 ```clojure
-(use 'ring.util.http-response)
+(require '[ring.util.http-response :refer :all])
 
 (continue)
 ; {:status 100, :headers {}, :body ""}
@@ -25,48 +26,63 @@ This library covers most/all of the available [http-statuses](http://www.w3.org/
 ; {:status 302, :headers {"Location" "url"}, :body ""}
 ```
 
-### Documentation
+### Asserting http responses
+
+Available for both Clojure & ClojureScript.
+
+``clojure
+(require '[ring.util.http-predicates :as hp])
+
+(hp/ok? {:status 200})
+; true
+
+(hp/not-found? {:status 404})
+; true
+```
+
+### Status codes & documentation
+
+For referring http codes by name & api docs like [Swagger](https://github.com/metosin/ring-swagger).
 
 ```clojure
-(doc temporary-redirect)
-; -------------------------
-; ring.util.http-response/temporary-redirect
-; ([url])
-;   307 TemporaryRedirect (Redirection)
-;
-; The request should be repeated with another URI but future requests can still use the original URI.
+(require '[ring.util.http-status :as hs])
 
-(doc bad-request)
-; -------------------------
-; ring.util.http-response/bad-request
-; ([body])
-;   400 BadRequest (ClientError)
-;
-; The request contains bad syntax or cannot be fulfilled.
+hs/ok
+; 200
+
+hs/not-found
+; 404
+
+(hs/status 500)
+; {:name "Internal Server Error"
+;  :description "There was an internal server error."}
 ```
 
 ### Throwing error responses
 
-All functions indicating a http error response have a exception throwing siblig with a bang in their name (`bad-request` & `bad-request!`). These functions [Slingshot](https://github.com/scgilardi/slingshot) the response in an exception.
+All response functions for http error response have a exception throwing sibling with a bang in the name
+(`bad-request` & `bad-request!`). These functions [Slingshot](https://github.com/scgilardi/slingshot) the
+response wrapped in an `ExceptionInfo`.
 
 ```clojure
-(bad-request "kosh")
-; {:status 400, :headers {}, :body "kosh"}
+(bad-request "fail")
+; {:status 400, :headers {}, :body "fail"}
 
-(bad-request! "kosh")
-; ExceptionInfo throw+: {:type :ring.util.http-response/response, :response {:status 400, :headers {}, :body "kosh"}}  ring.util.http-response/throw! (http_response.clj:24)
+(bad-request! "fail")
+; clojure.lang.ExceptionInfo: throw+: {:type :ring.util.http-response/response, :response {:status 400, :headers {}, :body "fail"}}
 ```
 
-There is also a `throw!` function to slingshot any response in an exception.
+There is also a `throw!` function to slingshot any kind response in an exception.
 
 ```clojure
 (throw! (header (bad-request "body") "header" "value"))
-; ExceptionInfo throw+: {:type :ring.util.http-response/response, :response {:status 400, :headers {"header" "value"}, :body "body"}}  ring.util.http-response/throw! (http_response.clj:24)
+; clojure.lang.ExceptionInfo: throw+: {:type :ring.util.http-response/response, :response {:status 400, :headers {"header" "value"}, :body "body"}}
 ```
 
-### Catching thrown responses
+### Catching thrown http responses
 
-There is a `catch-response` middleware in namespace `ring.middleware.http-response` to catch thrown http-responses and return the responses within. See the [facts](https://github.com/metosin/ring-http-response/blob/master/test/ring/middleware/http_response_test.clj) for more info.
+Mounting `ring.middleware.http-response/wrap-http-response` catches thrown http-responses and returns the responses within.
+See the [facts](https://github.com/metosin/ring-http-response/blob/master/test/ring/middleware/http_response_test.clj) for examples.
 
 ## Migrating from ring.util.response
 1. add the dependency
@@ -77,7 +93,9 @@ There is a `catch-response` middleware in namespace `ring.middleware.http-respon
    - 303: `redirect-after-post` => `see-other`
 4. enjoy
 
-`created` and `not-found` are same in both packages. Also rest of the `ring.util.response` public functions are available via `ring.util.http-response`. These include: `status`, `header` `file-response`, `content-type`, `charset`, `set-cookie`, `response?`, `url-response`, `resource-response` and `get-header`.
+`created` and `not-found` are same in both packages. Also rest of the public vars in `ring.util.response` are available via `ring.util.http-response`.
+These include: `status`, `header` `file-response`, `content-type`, `charset`, `set-cookie`,
+`response?`, `url-response`, `resource-response` and `get-header`.
 
 ## License
 Original [code](https://github.com/spray/spray/blob/master/spray-http/src/main/scala/spray/http/StatusCode.scala): Copyright © 2011-2013 the spray project <http://spray.io>.

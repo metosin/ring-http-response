@@ -4,11 +4,11 @@
 (def {{fn-name}} {{status}})
 {{/template}}
 
-(def statuses
-"Maps status to name and description"
-{
+(def status
+  "Maps status to name and description"
+  {
 {{#template}}
-  {{status}} {:name "{{name}}"
-  :description "{{description}}"}
+   {{status}} {:name "{{name}}"
+        :description "{{description}}"}
 {{/template}}
-})
+   })

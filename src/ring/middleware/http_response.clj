@@ -1,7 +1,7 @@
 (ns ring.middleware.http-response
   (:require [slingshot.slingshot :refer [try+]]))
 
-(defn catch-response
+(defn wrap-http-response
   [handler]
   (fn [request]
     (try+
