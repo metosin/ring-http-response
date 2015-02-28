@@ -9,7 +9,7 @@ Mostly a drop-in-place replacement for `ring.util.response`.
 
 ## Usage
 
-### Generating http responses
+### Generating HTTP responses
 
 Functions take either a `body`, `url` or nothing as parameters in align to the [spec](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
 
@@ -26,11 +26,11 @@ Functions take either a `body`, `url` or nothing as parameters in align to the [
 ; {:status 302, :headers {"Location" "url"}, :body ""}
 ```
 
-### Asserting http responses
+### Asserting HTTP responses
 
 Available for both Clojure & ClojureScript.
 
-``clojure
+```clojure
 (require '[ring.util.http-predicates :as hp])
 
 (hp/ok? {:status 200})
@@ -42,7 +42,7 @@ Available for both Clojure & ClojureScript.
 
 ### Status codes & documentation
 
-For referring http codes by name & api docs like [Swagger](https://github.com/metosin/ring-swagger).
+For referring HTTP codes by name & api docs like [Swagger](https://github.com/metosin/ring-swagger).
 
 ```clojure
 (require '[ring.util.http-status :as hs])
@@ -60,7 +60,7 @@ hs/not-found
 
 ### Throwing error responses
 
-All response functions for http error response have a exception throwing sibling with a bang in the name
+All response functions for HTTP error response have a exception throwing sibling with a bang in the name
 (`bad-request` & `bad-request!`). These functions [Slingshot](https://github.com/scgilardi/slingshot) the
 response wrapped in an `ExceptionInfo`.
 
@@ -79,15 +79,15 @@ There is also a `throw!` function to slingshot any kind response in an exception
 ; clojure.lang.ExceptionInfo: throw+: {:type :ring.util.http-response/response, :response {:status 400, :headers {"header" "value"}, :body "body"}}
 ```
 
-### Catching thrown http responses
+### Catching thrown HTTP responses
 
-Mounting `ring.middleware.http-response/wrap-http-response` catches thrown http-responses and returns the responses within.
+Mounting `ring.middleware.http-response/wrap-http-response` catches thrown HTTP-responses and returns the responses within.
 See the [facts](https://github.com/metosin/ring-http-response/blob/master/test/ring/middleware/http_response_test.clj) for examples.
 
 ## Migrating from ring.util.response
 1. add the dependency
 2. change your imports from `ring.util.response` to `ring.util.http-response`
-3. convert your responses to use the correct http-terms:
+3. convert your responses to use the correct HTTP-terms:
    - 200: `response` => `ok`
    - 302: `redirect` => `found`
    - 303: `redirect-after-post` => `see-other`
