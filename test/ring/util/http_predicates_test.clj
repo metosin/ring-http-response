@@ -3,7 +3,7 @@
             [ring.util.http-predicates :refer :all]))
 
 
-(facts "http-statusses"
+(facts "predicates for http status codes"
 
   (facts "Informational"
     {:status 100} => continue?

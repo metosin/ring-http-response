@@ -3,7 +3,7 @@
             [ring.util.http-status :refer :all]))
 
 
-(facts "http-statusses"
+(facts "http status codes"
 
   (facts "Informational"
     continue                               => 100
