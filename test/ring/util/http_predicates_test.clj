@@ -1,9 +1,9 @@
-(ns ring.util.http-status-predicates-test
+(ns ring.util.http-predicates-test
   (:require [midje.sweet :refer :all]
-            [ring.util.http-status :refer :all]))
+            [ring.util.http-predicates :refer :all]))
 
 
-(facts "http-statusses"
+(facts "predicates for http status codes"
 
   (facts "Informational"
     {:status 100} => continue?
