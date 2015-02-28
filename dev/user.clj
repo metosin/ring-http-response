@@ -104,4 +104,9 @@
   (doseq [ext ["clj" "cljs"]]
     (spit (str "src/ring/util/http_status." ext)
           (mustache/render-file "http-status.mustache"
+                                {:template template})))
+
+  (doseq [ext ["clj" "cljs"]]
+    (spit (str "src/ring/util/http_status_predicates." ext)
+          (mustache/render-file "http-status-predicates.mustache"
                                 {:template template}))))

@@ -1,6 +1,6 @@
 (ns ring.util.http-status-predicates-test
   (:require [midje.sweet :refer :all]
-            [ring.util.http-status :refer :all]))
+            [ring.util.http-status-predicates :refer :all]))
 
 
 (facts "http-statusses"

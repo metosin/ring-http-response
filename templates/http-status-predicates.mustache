@@ -1,0 +1,9 @@
+(ns ring.util.http-status-predicates)
+{{#template}}
+
+(defn {{fn-name}}?
+  "Checks whether the response has status code {{status}}"
+  [response]
+  {:pre (map? response)}
+  (= (:status response) {{status}}))
+{{/template}}
