@@ -106,7 +106,6 @@
           (mustache/render-file "http-status.mustache"
                                 {:template template})))
 
-  (doseq [ext ["clj" "cljs"]]
-    (spit (str "src/ring/util/http_status_predicates." ext)
-          (mustache/render-file "http-status-predicates.mustache"
-                                {:template template}))))
+  (spit (str "src/ring/util/http_predicates.clj")
+        (mustache/render-file "http-predicates.mustache"
+                              {:template template})))

@@ -1,4 +1,4 @@
-(ns ring.util.http-status-predicates)
+(ns ring.util.http-predicates)
 
 (defn continue?
   "Checks whether the response has status code 100"
