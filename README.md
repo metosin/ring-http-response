@@ -42,7 +42,7 @@ Available for both Clojure & ClojureScript.
 
 ### Status codes & documentation
 
-For referring HTTP codes by name & api docs like [Swagger](https://github.com/metosin/ring-swagger).
+For referring HTTP codes by name & for api docs like [Swagger](https://github.com/metosin/ring-swagger).
 
 ```clojure
 (require '[ring.util.http-status :as hs])
@@ -81,7 +81,7 @@ There is also a `throw!` function to slingshot any kind response in an exception
 
 ### Catching thrown HTTP responses
 
-Mounting `ring.middleware.http-response/wrap-http-response` catches thrown HTTP-responses and returns the responses within.
+Middleware `ring.middleware.http-response/wrap-http-response` catches thrown HTTP-responses and returns the responses within.
 See the [facts](https://github.com/metosin/ring-http-response/blob/master/test/ring/middleware/http_response_test.clj) for examples.
 
 ## Migrating from ring.util.response
