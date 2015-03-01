@@ -1,11 +1,11 @@
 ## 0.6.0 (28.2.2015)
 
 - move from macro-based compile-time code-generation into mustache-based pre-compile code generation
-  (big thanks to @frankiesardo!)
+  (big thanks to [@frankiesardo](https://github.com/frankiesardo)!)
 - FIXES
-  - #2 new namespace `ring.util.http-status`
-  - #3 `(user/generate!)`
-  - #5 `ring.util.http-predicates`
+  - [#2](https://github.com/metosin/ring-http-response/issues/2) new namespace `ring.util.http-status`
+  - [#3](https://github.com/metosin/ring-http-response/issues/3) `(user/generate!)`
+  - [#5](https://github.com/metosin/ring-http-response/issues/5) `ring.util.http-predicates`
 - **Breaking changes:**:
   - `reset-content` takes no body
   - `blocked-by-parental-control` => `blocked-by-windows-parental-controls`
