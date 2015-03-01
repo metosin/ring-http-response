@@ -1,4 +1,4 @@
-## 0.6.0 (28.2.2015)
+## 0.6.0 (1.3.2015)
 
 - move from macro-based compile-time code-generation into mustache-based pre-compile code generation
   (big thanks to [@frankiesardo](https://github.com/frankiesardo)!)
