@@ -1,3 +1,7 @@
+## 0.6.1 (11.3.2015)
+
+- generate also `ring.util.http-predicates` for ClojureScript.
+
 ## 0.6.0 (1.3.2015)
 
 - move from macro-based compile-time code-generation into mustache-based pre-compile code generation
