@@ -1,3 +1,11 @@
+## x.x.x
+
+- update dependencies
+
+```clojure
+[potemkin "0.3.13"] is available but we use "0.3.11"
+```
+
 ## 0.6.1 (11.3.2015)
 
 - generate also `ring.util.http-predicates` for ClojureScript.
