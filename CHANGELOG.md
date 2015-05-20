@@ -1,5 +1,6 @@
-## x.x.x
+## 0.6.2 (20.5.2015)
 
+- added `get-name` and `get-description` to status-ns.
 - update dependencies
 
 ```clojure

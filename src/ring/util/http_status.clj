@@ -200,3 +200,13 @@
    599 {:name "Network connect timeout"
         :description ""}
    })
+
+(defn get-name
+  "Returns http status name by code."
+  [code]
+  (get-in status [code :name]))
+
+(defn get-description
+  "Returns http status description by code."
+  [code]
+  (get-in status [code :description]))

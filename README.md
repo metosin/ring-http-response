@@ -31,12 +31,12 @@ Functions take either a `body`, `url` or nothing as parameters in align to the [
 Available for both Clojure & ClojureScript.
 
 ```clojure
-(require '[ring.util.http-predicates :as hp])
+(require '[ring.util.http-predicates :as predicates])
 
-(hp/ok? {:status 200})
+(predicates/ok? {:status 200})
 ; true
 
-(hp/not-found? {:status 404})
+(predicates/not-found? {:status 404})
 ; true
 ```
 
@@ -45,17 +45,23 @@ Available for both Clojure & ClojureScript.
 For referring HTTP codes by name & for api docs like [Swagger](https://github.com/metosin/ring-swagger).
 
 ```clojure
-(require '[ring.util.http-status :as hs])
+(require '[ring.util.http-status :as status])
 
-hs/ok
+status/ok
 ; 200
 
-hs/not-found
+status/not-found
 ; 404
 
-(hs/status 500)
-; {:name "Internal Server Error"
-;  :description "There was an internal server error."}
+(status/get-name 404)
+; "Not Found"
+
+(status/get-description 404)
+; "The requested resource could not be found but may be available again in the future."
+
+(status/status 404)
+; {:name "Not Found"
+;  :description "The requested resource could not be found but may be available again in the future."}
 ```
 
 ### Throwing error responses
