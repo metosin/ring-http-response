@@ -1,3 +1,7 @@
+## 0.6.3 (8.7.2015)
+
+- Added predicates for HTTP status types (classes) such as `success?`, `client-error?` and `server-error?`
+
 ## 0.6.2 (20.5.2015)
 
 - added `get-name` and `get-description` to status-ns.
