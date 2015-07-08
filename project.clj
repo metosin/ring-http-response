@@ -14,6 +14,6 @@
                    :resource-paths ["templates"]
                    :source-paths ["dev"]
                    :dependencies [[org.tobereplaced/lettercase "1.0.0"]
-                                  [stencil "0.3.5"]
-                                  [midje "1.6.3"]]}}
+                                  [stencil "0.4.0"]
+                                  [midje "1.7.0"]]}}
   :aliases {"test-ancient" ["midje"]})
