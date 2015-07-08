@@ -93,6 +93,11 @@
      (get-type status)
      options)))
 
+(def type-template
+  (map (fn [{:keys [type] :as m}]
+         (assoc m :fn-name (lc/lower-hyphen-name type)))
+       types))
+
 (def imports
   ["status" "header" "file-response" "content-type" "charset" "set-cookie"
    "response?" "url-response" "resource-response" "get-header"])
@@ -111,4 +116,5 @@
 
     (spit (str "src/ring/util/http_predicates." ext)
           (mustache/render-file "http-predicates.mustache"
-                                {:template template}))))
+                                {:template template
+                                 :types type-template}))))

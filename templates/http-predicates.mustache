@@ -1,6 +1,13 @@
 (ns ring.util.http-predicates)
-{{#template}}
+{{#types}}
 
+(defn {{fn-name}}?
+  "Check whether the response type is {{type}} (status code is between
+  {{start}} and {{end}})."
+  [response]
+  {:pre (map? response)}
+  (<= {{start}} (:status response) {{end}}))
+{{/types}}{{#template}}
 (defn {{fn-name}}?
   "Checks whether the response has status code {{status}}"
   [response]

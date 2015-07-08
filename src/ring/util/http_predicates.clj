@@ -1,5 +1,40 @@
 (ns ring.util.http-predicates)
 
+(defn informational?
+  "Check whether the response type is Informational (status code is between
+  100 and 199)."
+  [response]
+  {:pre (map? response)}
+  (<= 100 (:status response) 199))
+
+(defn success?
+  "Check whether the response type is Success (status code is between
+  200 and 299)."
+  [response]
+  {:pre (map? response)}
+  (<= 200 (:status response) 299))
+
+(defn redirection?
+  "Check whether the response type is Redirection (status code is between
+  300 and 399)."
+  [response]
+  {:pre (map? response)}
+  (<= 300 (:status response) 399))
+
+(defn client-error?
+  "Check whether the response type is ClientError (status code is between
+  400 and 499)."
+  [response]
+  {:pre (map? response)}
+  (<= 400 (:status response) 499))
+
+(defn server-error?
+  "Check whether the response type is ServerError (status code is between
+  500 and 599)."
+  [response]
+  {:pre (map? response)}
+  (<= 500 (:status response) 599))
+
 (defn continue?
   "Checks whether the response has status code 100"
   [response]
