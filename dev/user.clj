@@ -70,15 +70,18 @@
    [598 "Network read timeout" ""]
    [599 "Network connect timeout" ""]])
 
-(defrecord StatusType [type entity? location? success?])
+(def types
+  [{:type "Informational", :entity? false, :location? false, :success? true,  :start 100, :end 199}
+   {:type "Success",       :entity? true,  :location? false, :success? true,  :start 200, :end 299}
+   {:type "Redirection",   :entity? false, :location? true,  :success? true,  :start 300, :end 399}
+   {:type "ClientError",   :entity? true,  :location? false, :success? false, :start 400, :end 499}
+   {:type "ServerError",   :entity? true,  :location? false, :success? false, :start 500, :end 599}])
+
+(def types-by-code (into {} (for [type types]
+                              [(:start type) type])))
 
 (defn get-type [status]
-  (cond
-    (<= 100 status 199) (->StatusType "Informational" false false true)
-    (<= 200 status 299) (->StatusType "Success"       true  false true)
-    (<= 300 status 399) (->StatusType "Redirection"   false true  true)
-    (<= 400 status 499) (->StatusType "ClientError"   true  false false)
-    (<= 500 status 599) (->StatusType "ServerError"   true  false false)))
+  (get types-by-code (- status (mod status 100))))
 
 (def template
   (for [[status name description options] responses]
