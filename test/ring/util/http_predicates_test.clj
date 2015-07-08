@@ -8,7 +8,8 @@
   (facts "Informational"
     {:status 100} => continue?
     {:status 101} => switching-protocols?
-    {:status 102} => processing?)
+    {:status 102} => processing?
+    {:status 101} => informational?)
 
   (facts "Success"
     {:status 200} => ok?
@@ -20,7 +21,8 @@
     {:status 206} => partial-content?
     {:status 207} => multi-status?
     {:status 208} => already-reported?
-    {:status 226} => im-used?)
+    {:status 226} => im-used?
+    {:status 205} => success?)
 
   (facts "Redirection"
     {:status 300} => multiple-choices?
@@ -30,7 +32,8 @@
     {:status 304} => not-modified?
     {:status 305} => use-proxy?
     {:status 307} => temporary-redirect?
-    {:status 308} => permanent-redirect?)
+    {:status 308} => permanent-redirect?
+    {:status 305} => redirection?)
 
   (facts "ClientError"
     {:status 400} => bad-request?
@@ -62,7 +65,8 @@
     {:status 431} => request-header-fields-too-large?
     {:status 449} => retry-with?
     {:status 450} => blocked-by-windows-parental-controls?
-    {:status 451} => unavailable-for-legal-reasons?)
+    {:status 451} => unavailable-for-legal-reasons?
+    {:status 431} => client-error?)
 
   (facts "ServerError"
     {:status 500} => internal-server-error?
@@ -78,4 +82,5 @@
     {:status 510} => not-extended?
     {:status 511} => network-authentication-required?
     {:status 598} => network-read-timeout?
-    {:status 599} => network-connect-timeout?))
+    {:status 599} => network-connect-timeout?
+    {:status 504} => server-error?))
