@@ -1,3 +1,15 @@
+## 0.6.4 (21.8.2016)
+
+- import new functions from ring 1.4.0: `find-header`, `get-header`, `resource-data`
+- update dependencies:
+
+```clojure
+[ring/ring-core "1.4.0"] is available but we use "1.3.2"
+[potemkin "0.4.1"] is available but we use "0.3.13"
+[stencil "0.5.0"] is available but we use "0.3.5"
+[midje "1.7.0"] is available but we use "1.6.3"
+```
+
 ## 0.6.3 (8.7.2015)
 
 - Added predicates for HTTP status types (classes) such as `success?`, `client-error?` and `server-error?`

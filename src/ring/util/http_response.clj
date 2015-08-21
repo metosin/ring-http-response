@@ -1079,4 +1079,7 @@
                   response?
                   url-response
                   resource-response
-                  get-header])
+                  get-header
+                  find-header
+                  get-header
+                  resource-data])
