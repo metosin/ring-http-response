@@ -1,3 +1,7 @@
+## 0.6.5 (1.9.2016)
+
+- import only extra ring vars if they exist, so that the ns compiles with non-latest ring.
+
 ## 0.6.4 (21.8.2016)
 
 - import new functions from ring 1.4.0: `find-header`, `get-header`, `resource-data`

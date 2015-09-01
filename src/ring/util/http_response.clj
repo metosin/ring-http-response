@@ -1069,17 +1069,20 @@
 ;; Imported vars from ring.util.response
 ;;
 
-(p/import-vars [ring.util.response
-                  status
-                  header
-                  file-response
-                  content-type
-                  charset
-                  set-cookie
-                  response?
-                  url-response
-                  resource-response
-                  get-header
-                  find-header
-                  get-header
-                  resource-data])
+(defmacro safe-import [ns sym]
+  (if (ns-resolve ns sym)
+    `(p/import-vars [~ns ~sym])))
+
+(safe-import ring.util.response status)
+(safe-import ring.util.response header)
+(safe-import ring.util.response file-response)
+(safe-import ring.util.response content-type)
+(safe-import ring.util.response charset)
+(safe-import ring.util.response set-cookie)
+(safe-import ring.util.response response?)
+(safe-import ring.util.response url-response)
+(safe-import ring.util.response resource-response)
+(safe-import ring.util.response get-header)
+(safe-import ring.util.response find-header)
+(safe-import ring.util.response get-header)
+(safe-import ring.util.response resource-data)
