@@ -21,7 +21,7 @@
    [301 "Moved Permanently" "This and all future requests should be directed to the given URI."]
    [302 "Found" "The resource was found but at a different URI."]
    [303 "See Other" "The response to the request can be found under another URI using a GET method."]
-   [304 "Not Modified" "The resource has not been modified since last requested." {:entity? false}]
+   [304 "Not Modified" "The resource has not been modified since last requested." {:location? false}]
    [305 "Use Proxy" "This single request is to be repeated via the proxy given by the Location field."]
    [307 "Temporary Redirect" "The request should be repeated with another URI but future requests can still use the original URI."]
    [308 "Permanent Redirect" "The request and all future requests should be repeated using another URI."]
