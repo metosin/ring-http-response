@@ -1,3 +1,11 @@
+## NEXT
+
+- update dependencies
+
+```clj
+[potemkin "0.4.2"] is available but we use "0.4.1"
+```
+
 ## 0.6.5 (1.9.2016)
 
 - import only extra ring vars if they exist, so that the ns compiles with non-latest ring.
