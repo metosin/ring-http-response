@@ -15,7 +15,9 @@
                    :dependencies [[org.clojure/clojure "1.7.0"]
                                   [org.tobereplaced/lettercase "1.0.0"]
                                   [stencil "0.5.0"]
-                                  [midje "1.8.2"]]}
+                                  [midje "1.8.2"]
+                                  ; Required when using with Java 1.6 with Midje
+                                  [org.codehaus.jsr166-mirror/jsr166y "1.7.0"]]}
              :1.6 {:dependencies [[org.clojure/clojure "1.6.0"]]}}
   :aliases {"all" ["with-profile" "dev:dev,1.6" "midje"]
             "test-ancient" ["midje"]})
