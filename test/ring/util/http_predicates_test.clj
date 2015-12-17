@@ -1,86 +1,86 @@
 (ns ring.util.http-predicates-test
-  (:require [midje.sweet :refer :all]
+  (:require [clojure.test :refer :all]
             [ring.util.http-predicates :refer :all]))
 
 
-(facts "predicates for http status codes"
+(deftest http-status-code-predicates-test
 
-  (facts "Informational"
-    {:status 100} => continue?
-    {:status 101} => switching-protocols?
-    {:status 102} => processing?
-    {:status 101} => informational?)
+  (testing "Informational"
+    (is (continue? {:status 100}))
+    (is (switching-protocols? {:status 101}))
+    (is (processing? {:status 102}))
+    (is (informational? {:status 101})))
 
-  (facts "Success"
-    {:status 200} => ok?
-    {:status 201} => created?
-    {:status 202} => accepted?
-    {:status 203} => non-authoritative-information?
-    {:status 204} => no-content?
-    {:status 205} => reset-content?
-    {:status 206} => partial-content?
-    {:status 207} => multi-status?
-    {:status 208} => already-reported?
-    {:status 226} => im-used?
-    {:status 205} => success?)
+  (testing "Success"
+    (is (ok? {:status 200}))
+    (is (created? {:status 201}))
+    (is (accepted? {:status 202}))
+    (is (non-authoritative-information? {:status 203}))
+    (is (no-content? {:status 204}))
+    (is (reset-content? {:status 205}))
+    (is (partial-content? {:status 206}))
+    (is (multi-status? {:status 207}))
+    (is (already-reported? {:status 208}))
+    (is (im-used? {:status 226}))
+    (is (success? {:status 205})))
 
-  (facts "Redirection"
-    {:status 300} => multiple-choices?
-    {:status 301} => moved-permanently?
-    {:status 302} => found?
-    {:status 303} => see-other?
-    {:status 304} => not-modified?
-    {:status 305} => use-proxy?
-    {:status 307} => temporary-redirect?
-    {:status 308} => permanent-redirect?
-    {:status 305} => redirection?)
+  (testing "Redirection"
+    (is (multiple-choices? {:status 300}))
+    (is (moved-permanently? {:status 301}))
+    (is (found? {:status 302}))
+    (is (see-other? {:status 303}))
+    (is (not-modified? {:status 304}))
+    (is (use-proxy? {:status 305}))
+    (is (temporary-redirect? {:status 307}))
+    (is (permanent-redirect? {:status 308}))
+    (is (redirection? {:status 305})))
 
-  (facts "ClientError"
-    {:status 400} => bad-request?
-    {:status 401} => unauthorized?
-    {:status 402} => payment-required?
-    {:status 403} => forbidden?
-    {:status 404} => not-found?
-    {:status 405} => method-not-allowed?
-    {:status 406} => not-acceptable?
-    {:status 407} => proxy-authentication-required?
-    {:status 408} => request-timeout?
-    {:status 409} => conflict?
-    {:status 410} => gone?
-    {:status 411} => length-required?
-    {:status 412} => precondition-failed?
-    {:status 413} => request-entity-too-large?
-    {:status 414} => request-uri-too-long?
-    {:status 415} => unsupported-media-type?
-    {:status 416} => requested-range-not-satisfiable?
-    {:status 417} => expectation-failed?
-    {:status 420} => enhance-your-calm?
-    {:status 422} => unprocessable-entity?
-    {:status 423} => locked?
-    {:status 424} => failed-dependency?
-    {:status 425} => unordered-collection?
-    {:status 426} => upgrade-required?
-    {:status 428} => precondition-required?
-    {:status 429} => too-many-requests?
-    {:status 431} => request-header-fields-too-large?
-    {:status 449} => retry-with?
-    {:status 450} => blocked-by-windows-parental-controls?
-    {:status 451} => unavailable-for-legal-reasons?
-    {:status 431} => client-error?)
+  (testing "ClientError"
+    (is (bad-request? {:status 400}))
+    (is (unauthorized? {:status 401}))
+    (is (payment-required? {:status 402}))
+    (is (forbidden? {:status 403}))
+    (is (not-found? {:status 404}))
+    (is (method-not-allowed? {:status 405}))
+    (is (not-acceptable? {:status 406}))
+    (is (proxy-authentication-required? {:status 407}))
+    (is (request-timeout? {:status 408}))
+    (is (conflict? {:status 409}))
+    (is (gone? {:status 410}))
+    (is (length-required? {:status 411}))
+    (is (precondition-failed? {:status 412}))
+    (is (request-entity-too-large? {:status 413}))
+    (is (request-uri-too-long? {:status 414}))
+    (is (unsupported-media-type? {:status 415}))
+    (is (requested-range-not-satisfiable? {:status 416}))
+    (is (expectation-failed? {:status 417}))
+    (is (enhance-your-calm? {:status 420}))
+    (is (unprocessable-entity? {:status 422}))
+    (is (locked? {:status 423}))
+    (is (failed-dependency? {:status 424}))
+    (is (unordered-collection? {:status 425}))
+    (is (upgrade-required? {:status 426}))
+    (is (precondition-required? {:status 428}))
+    (is (too-many-requests? {:status 429}))
+    (is (request-header-fields-too-large? {:status 431}))
+    (is (retry-with? {:status 449}))
+    (is (blocked-by-windows-parental-controls? {:status 450}))
+    (is (unavailable-for-legal-reasons? {:status 451}))
+    (is (client-error? {:status 431})))
 
-  (facts "ServerError"
-    {:status 500} => internal-server-error?
-    {:status 501} => not-implemented?
-    {:status 502} => bad-gateway?
-    {:status 503} => service-unavailable?
-    {:status 504} => gateway-timeout?
-    {:status 505} => http-version-not-supported?
-    {:status 506} => variant-also-negotiates?
-    {:status 507} => insufficient-storage?
-    {:status 508} => loop-detected?
-    {:status 509} => bandwidth-limit-exceeded?
-    {:status 510} => not-extended?
-    {:status 511} => network-authentication-required?
-    {:status 598} => network-read-timeout?
-    {:status 599} => network-connect-timeout?
-    {:status 504} => server-error?))
+  (testing "ServerError"
+    (is (internal-server-error? {:status 500}))
+    (is (not-implemented? {:status 501}))
+    (is (bad-gateway? {:status 502}))
+    (is (service-unavailable? {:status 503}))
+    (is (gateway-timeout? {:status 504}))
+    (is (http-version-not-supported? {:status 505}))
+    (is (variant-also-negotiates? {:status 506}))
+    (is (insufficient-storage? {:status 507}))
+    (is (loop-detected? {:status 508}))
+    (is (bandwidth-limit-exceeded? {:status 509}))
+    (is (not-extended? {:status 510}))
+    (is (network-authentication-required? {:status 511}))
+    (is (network-read-timeout? {:status 598}))
+    (is (network-connect-timeout? {:status 599}))
+    (is (server-error? {:status 504}))))

@@ -1,85 +1,86 @@
 (ns ring.util.http-status-test
-  (:require [midje.sweet :refer :all]
+  (:require [clojure.test :refer :all]
             [ring.util.http-status :refer :all]))
 
 
-(facts "http status codes"
+(deftest http-status-codes-test
 
-  (facts "Informational"
-    continue                               => 100
-    switching-protocols                    => 101
-    processing                             => 102)
+  (testing "Informational"
+    (is (= 100 continue))
+    (is (= 101 switching-protocols))
+    (is (= 102 processing)))
 
-  (facts "Success"
-    ok                                     => 200
-    created                                => 201
-    accepted                               => 202
-    non-authoritative-information          => 203
-    no-content                             => 204
-    reset-content                          => 205
-    partial-content                        => 206
-    multi-status                           => 207
-    already-reported                       => 208
-    im-used                                => 226)
+  (testing "Success"
+    (is (= 200 ok))
+    (is (= 201 created))
+    (is (= 202 accepted))
+    (is (= 203 non-authoritative-information))
+    (is (= 204 no-content))
+    (is (= 205 reset-content))
+    (is (= 206 partial-content))
+    (is (= 207 multi-status))
+    (is (= 208 already-reported))
+    (is (= 226 im-used)))
 
-  (facts "Redirection"
-    multiple-choices                       => 300
-    moved-permanently                      => 301
-    found                                  => 302
-    see-other                              => 303
-    not-modified                           => 304
-    use-proxy                              => 305
-    temporary-redirect                     => 307
-    permanent-redirect                     => 308)
+  (testing "Redirection"
+    (is (= 300 multiple-choices))
+    (is (= 301 moved-permanently))
+    (is (= 302 found))
+    (is (= 303 see-other))
+    (is (= 304 not-modified))
+    (is (= 305 use-proxy))
+    (is (= 307 temporary-redirect))
+    (is (= 308 permanent-redirect)))
 
-  (facts "ClientError"
-    bad-request                            => 400
-    unauthorized                           => 401
-    payment-required                       => 402
-    forbidden                              => 403
-    not-found                              => 404
-    method-not-allowed                     => 405
-    not-acceptable                         => 406
-    proxy-authentication-required          => 407
-    request-timeout                        => 408
-    conflict                               => 409
-    gone                                   => 410
-    length-required                        => 411
-    precondition-failed                    => 412
-    request-entity-too-large               => 413
-    request-uri-too-long                   => 414
-    unsupported-media-type                 => 415
-    requested-range-not-satisfiable        => 416
-    expectation-failed                     => 417
-    enhance-your-calm                      => 420
-    unprocessable-entity                   => 422
-    locked                                 => 423
-    failed-dependency                      => 424
-    unordered-collection                   => 425
-    upgrade-required                       => 426
-    precondition-required                  => 428
-    too-many-requests                      => 429
-    request-header-fields-too-large        => 431
-    retry-with                             => 449
-    blocked-by-windows-parental-controls   => 450
-    unavailable-for-legal-reasons          => 451)
+  (testing "ClientError"
+    (is (= 400 bad-request))
+    (is (= 401 unauthorized))
+    (is (= 402 payment-required))
+    (is (= 403 forbidden))
+    (is (= 404 not-found))
+    (is (= 405 method-not-allowed))
+    (is (= 406 not-acceptable))
+    (is (= 407 proxy-authentication-required))
+    (is (= 408 request-timeout))
+    (is (= 409 conflict))
+    (is (= 410 gone))
+    (is (= 411 length-required))
+    (is (= 412 precondition-failed))
+    (is (= 413 request-entity-too-large))
+    (is (= 414 request-uri-too-long))
+    (is (= 415 unsupported-media-type))
+    (is (= 416 requested-range-not-satisfiable))
+    (is (= 417 expectation-failed))
+    (is (= 420 enhance-your-calm))
+    (is (= 422 unprocessable-entity))
+    (is (= 423 locked))
+    (is (= 424 failed-dependency))
+    (is (= 425 unordered-collection))
+    (is (= 426 upgrade-required))
+    (is (= 428 precondition-required))
+    (is (= 429 too-many-requests))
+    (is (= 431 request-header-fields-too-large))
+    (is (= 449 retry-with))
+    (is (= 450 blocked-by-windows-parental-controls))
+    (is (= 451 unavailable-for-legal-reasons)))
 
-  (facts "ServerError"
-    internal-server-error                  => 500
-    not-implemented                        => 501
-    bad-gateway                            => 502
-    service-unavailable                    => 503
-    gateway-timeout                        => 504
-    http-version-not-supported             => 505
-    variant-also-negotiates                => 506
-    insufficient-storage                   => 507
-    loop-detected                          => 508
-    bandwidth-limit-exceeded               => 509
-    not-extended                           => 510
-    network-authentication-required        => 511
-    network-read-timeout                   => 598
-    network-connect-timeout                => 599))
+  (testing "ServerError"
+    (is (= 500 internal-server-error))
+    (is (= 501 not-implemented))
+    (is (= 502 bad-gateway))
+    (is (= 503 service-unavailable))
+    (is (= 504 gateway-timeout))
+    (is (= 505 http-version-not-supported))
+    (is (= 506 variant-also-negotiates))
+    (is (= 507 insufficient-storage))
+    (is (= 508 loop-detected))
+    (is (= 509 bandwidth-limit-exceeded))
+    (is (= 510 not-extended))
+    (is (= 511 network-authentication-required))
+    (is (= 598 network-read-timeout))
+    (is (= 599 network-connect-timeout))))
 
-(fact "status"
-  (status 500) => {:name "Internal Server Error"
-                   :description "There was an internal server error."})
+(deftest status-test
+  (is {:name "Internal Server Error"
+       :description "There was an internal server error."}
+      (status 500)))

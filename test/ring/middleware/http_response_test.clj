@@ -1,23 +1,21 @@
 (ns ring.middleware.http-response-test
-  (:require [midje.sweet :refer :all]
+  (:require [clojure.test :refer :all]
             [ring.middleware.http-response :refer :all]
             [ring.util.http-response :refer :all]))
 
-(defmacro always [& body] `(fn [_#] ~@body))
-
-(def bad (always (bad-request "BAD")))
-(def bad! (always (bad-request! "BAD")))
+(def bad (fn [_] (bad-request "BAD")))
+(def bad! (fn [_] (bad-request! "BAD")))
 (def bad-result (bad-request "BAD"))
 
-(fact "wrap-http-response"
+(deftest wrap-http-response-test
 
-  (facts "without middleware exception is thrown"
-    (bad ..request..) => bad-result
-    (bad! ..request..) => (throws Exception))
+  (testing "without middleware exception is thrown"
+    (is (= bad-result (bad nil)))
+    (is (thrown? Exception (bad! nil))))
 
-  (facts "with middleware exceptions are converted into responses"
-    ((wrap-http-response bad) ..request..) => bad-result
-    ((wrap-http-response bad!) ..request..) => bad-result)
+  (testing "with middleware exceptions are converted into responses"
+    (is (= bad-result ((wrap-http-response bad) nil)))
+    (is (= bad-result ((wrap-http-response bad!) nil))))
 
-  (fact "only response-exceptions are caugh"
-    ((wrap-http-response (always (throw (RuntimeException.)))) ..request..) => (throws Exception)))
+  (testing "only response-exceptions are caugh"
+    (is (thrown? Exception ((wrap-http-response (fn [_] (throw (RuntimeException.)))) nil)))))
