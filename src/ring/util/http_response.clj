@@ -156,9 +156,9 @@
 (defn not-modified
   "304 Not Modified (Redirection)
   The resource has not been modified since last requested."
-  ([url]
+  ([]
    {:status 304
-    :headers {"Location" url}
+    :headers {}
     :body ""}))
 
 (defn use-proxy

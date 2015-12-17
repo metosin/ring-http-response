@@ -27,7 +27,7 @@
     (moved-permanently "/url")                      => {:status 301 :headers {"Location" "/url"} :body ""}
     (found "/url")                                  => {:status 302 :headers {"Location" "/url"} :body ""}
     (see-other "/url")                              => {:status 303 :headers {"Location" "/url"} :body ""}
-    (not-modified "/url")                           => {:status 304 :headers {"Location" "/url"} :body ""}
+    (not-modified)                                  => {:status 304 :headers {} :body ""}
     (use-proxy "/url")                              => {:status 305 :headers {"Location" "/url"} :body ""}
     (temporary-redirect "/url")                     => {:status 307 :headers {"Location" "/url"} :body ""}
     (permanent-redirect "/url")                     => {:status 308 :headers {"Location" "/url"} :body ""})
