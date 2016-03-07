@@ -3,7 +3,7 @@
 - update dependencies
 
 ```clj
-[potemkin "0.4.2"] is available but we use "0.4.1"
+[potemkin "0.4.3"] is available but we use "0.4.1"
 ```
 
 ## 0.6.5 (1.9.2016)

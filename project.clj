@@ -6,7 +6,7 @@
             :distribution :repo
             :comments "same as Clojure"}
   :dependencies [[ring/ring-core "1.4.0"]
-                 [potemkin "0.4.2"]
+                 [potemkin "0.4.3"]
                  [slingshot "0.12.2"]]
   :profiles {:dev {:plugins [[lein-clojars "0.9.1"]]
                    :resource-paths ["templates"]
@@ -15,5 +15,4 @@
                                   [org.tobereplaced/lettercase "1.0.0"]
                                   [stencil "0.5.0"]]}
              :1.6 {:dependencies [[org.clojure/clojure "1.6.0"]]}}
-  :aliases {"all" ["with-profile" "dev:dev,1.6" "test"]
-            "test-ancient" ["midje"]})
+  :aliases {"all" ["with-profile" "dev:dev,1.6" "test"]})
