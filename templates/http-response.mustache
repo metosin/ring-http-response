@@ -37,10 +37,10 @@
 ;; Imported vars from ring.util.response
 ;;
 
-(defmacro safe-import [ns sym]
-  (if (ns-resolve ns sym)
-    `(p/import-vars [~ns ~sym])))
-
 {{#imports}}
-(safe-import ring.util.response {{{.}}})
+;; {{.}}
+(if-not (ns-resolve 'ring.util.response '{{.}})
+  (println "Can't import ring.util.response/{{.}}, try updating to Ring 1.5.0+"))
+(p/import-vars [ring.util.response {{{.}}}])
+
 {{/imports}}

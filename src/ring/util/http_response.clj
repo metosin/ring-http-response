@@ -1069,20 +1069,68 @@
 ;; Imported vars from ring.util.response
 ;;
 
-(defmacro safe-import [ns sym]
-  (if (ns-resolve ns sym)
-    `(p/import-vars [~ns ~sym])))
+;; status
+(if-not (ns-resolve 'ring.util.response 'status)
+  (println "Can't import ring.util.response/status, try updating to Ring 1.5.0+"))
+(p/import-vars [ring.util.response status])
 
-(safe-import ring.util.response status)
-(safe-import ring.util.response header)
-(safe-import ring.util.response file-response)
-(safe-import ring.util.response content-type)
-(safe-import ring.util.response charset)
-(safe-import ring.util.response set-cookie)
-(safe-import ring.util.response response?)
-(safe-import ring.util.response url-response)
-(safe-import ring.util.response resource-response)
-(safe-import ring.util.response get-header)
-(safe-import ring.util.response find-header)
-(safe-import ring.util.response get-header)
-(safe-import ring.util.response resource-data)
+;; header
+(if-not (ns-resolve 'ring.util.response 'header)
+  (println "Can't import ring.util.response/header, try updating to Ring 1.5.0+"))
+(p/import-vars [ring.util.response header])
+
+;; file-response
+(if-not (ns-resolve 'ring.util.response 'file-response)
+  (println "Can't import ring.util.response/file-response, try updating to Ring 1.5.0+"))
+(p/import-vars [ring.util.response file-response])
+
+;; content-type
+(if-not (ns-resolve 'ring.util.response 'content-type)
+  (println "Can't import ring.util.response/content-type, try updating to Ring 1.5.0+"))
+(p/import-vars [ring.util.response content-type])
+
+;; charset
+(if-not (ns-resolve 'ring.util.response 'charset)
+  (println "Can't import ring.util.response/charset, try updating to Ring 1.5.0+"))
+(p/import-vars [ring.util.response charset])
+
+;; set-cookie
+(if-not (ns-resolve 'ring.util.response 'set-cookie)
+  (println "Can't import ring.util.response/set-cookie, try updating to Ring 1.5.0+"))
+(p/import-vars [ring.util.response set-cookie])
+
+;; response?
+(if-not (ns-resolve 'ring.util.response 'response?)
+  (println "Can't import ring.util.response/response?, try updating to Ring 1.5.0+"))
+(p/import-vars [ring.util.response response?])
+
+;; url-response
+(if-not (ns-resolve 'ring.util.response 'url-response)
+  (println "Can't import ring.util.response/url-response, try updating to Ring 1.5.0+"))
+(p/import-vars [ring.util.response url-response])
+
+;; resource-response
+(if-not (ns-resolve 'ring.util.response 'resource-response)
+  (println "Can't import ring.util.response/resource-response, try updating to Ring 1.5.0+"))
+(p/import-vars [ring.util.response resource-response])
+
+;; get-header
+(if-not (ns-resolve 'ring.util.response 'get-header)
+  (println "Can't import ring.util.response/get-header, try updating to Ring 1.5.0+"))
+(p/import-vars [ring.util.response get-header])
+
+;; find-header
+(if-not (ns-resolve 'ring.util.response 'find-header)
+  (println "Can't import ring.util.response/find-header, try updating to Ring 1.5.0+"))
+(p/import-vars [ring.util.response find-header])
+
+;; get-header
+(if-not (ns-resolve 'ring.util.response 'get-header)
+  (println "Can't import ring.util.response/get-header, try updating to Ring 1.5.0+"))
+(p/import-vars [ring.util.response get-header])
+
+;; resource-data
+(if-not (ns-resolve 'ring.util.response 'resource-data)
+  (println "Can't import ring.util.response/resource-data, try updating to Ring 1.5.0+"))
+(p/import-vars [ring.util.response resource-data])
+

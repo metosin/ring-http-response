@@ -1,8 +1,11 @@
-## NEXT
+## 0.7.0 (13.6.2016)
 
+- Test with Clojure 1.7.0 & 1.8.0
+- Better imports of `ring.util.response` -> `ring.util.http-response` (fail with informative message if old version of Ring is used)
 - update dependencies
 
 ```clj
+[ring/ring-core "1.5.0"] is available but we use "1.4.0"
 [potemkin "0.4.3"] is available but we use "0.4.1"
 ```
 
