@@ -46,9 +46,10 @@
   "201 Created (Success)
   The request has been fulfilled and resulted in a new resource being created."
   ([] (created nil))
-  ([body]
+  ([url] (created url nil))
+  ([url body]
    {:status 201
-    :headers {}
+    :headers {"Location" url}
     :body body}))
 
 (defn accepted

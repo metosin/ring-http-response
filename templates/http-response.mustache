@@ -10,6 +10,18 @@
   (throw+ {:type ::response :response response}))
 {{#template}}
 
+{{#location-entity?}}
+(defn {{fn-name}}
+  "{{status}} {{name}} ({{type}})
+  {{description}}"
+  ([] ({{fn-name}} nil))
+  ([url] ({{fn-name}} url nil))
+  ([url body]
+   {:status {{status}}
+    :headers {"Location" url}
+    :body body}))
+{{/location-entity?}}
+{{^location-entity?}}
 (defn {{fn-name}}
   "{{status}} {{name}} ({{type}})
   {{description}}"
@@ -18,6 +30,7 @@
    {:status {{status}}
     :headers {{#location?}}{"Location" url}{{/location?}}{{^location?}}{}{{/location?}}
     :body {{#entity?}}body{{/entity?}}{{^entity?}}""{{/entity?}}}))
+{{/location-entity?}}
 {{^success?}}
 
 (defn {{fn-name}}!
