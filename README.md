@@ -11,7 +11,7 @@ Mostly a drop-in-place replacement for `ring.util.response`.
 
 ### Generating HTTP responses
 
-Functions take either a `body`, `url` or nothing as parameters in align to the [spec](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
+Functions take either a `body`, `url`, both or nothing as parameters in align to the [spec](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
 
 ```clojure
 (require '[ring.util.http-response :refer :all])
@@ -21,6 +21,9 @@ Functions take either a `body`, `url` or nothing as parameters in align to the [
 
 (ok "body")
 ; {:status 200, :headers {}, :body "body"}
+
+(created "url" "body")
+; {:status 201, :headers {"Location" "url"}, :body "body"}
 
 (found "url")
 ; {:status 302, :headers {"Location" "url"}, :body ""}
@@ -100,12 +103,12 @@ See the [facts](https://github.com/metosin/ring-http-response/blob/master/test/r
 4. enjoy
 
 `created` and `not-found` are same in both packages. Also rest of the public vars in `ring.util.response` are available via `ring.util.http-response`.
-These include: `status`, `header` `file-response`, `content-type`, `charset`, `set-cookie`,
-`response?`, `url-response`, `resource-response` and `get-header`.
+These include: `status`, `header`, `file-response`, `content-type`, `find-header`, `get-header`, `update-header`, `charset`, `set-cookie`, `response?`
+`resource-data`, `url-response` and `resource-response`.
 
 ## License
 Original [code](https://github.com/spray/spray/blob/master/spray-http/src/main/scala/spray/http/StatusCode.scala): Copyright © 2011-2013 the spray project <http://spray.io>.
 
-Copyright © 2014-2015 [Metosin Oy](http://www.metosin.fi)
+Copyright © 2014-2016 [Metosin Oy](http://www.metosin.fi)
 
 Distributed under the Eclipse Public License, the same as Clojure.
