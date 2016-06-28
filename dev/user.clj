@@ -100,9 +100,9 @@
        types))
 
 (def imports
-  ["status" "header" "file-response" "content-type" "charset" "set-cookie"
-   "response?" "url-response" "resource-response" "get-header"
-   "find-header" "get-header" "resource-data"])
+  ["status" "header" "file-response" "content-type" "find-header" "get-header"
+   "update-header" "charset" "set-cookie" "response?" "resource-data"
+   "url-response" "resource-response"])
 
 (stencil.loader/set-cache (clojure.core.cache/ttl-cache-factory {} :ttl 0))
 
