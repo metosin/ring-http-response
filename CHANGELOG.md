@@ -1,3 +1,8 @@
+## 0.8.0 (28.6.2016)
+
+- **BREAKING**: first argument for `created` is `url`, not `body`. Has 2-arity version which takes both `url` & `body` in align to the [spec](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) & [ring](https://github.com/ring-clojure/ring/blob/master/ring-core/src/ring/util/response.clj#L37)
+   - fixes [#12](https://github.com/metosin/ring-http-response/issues/12).
+
 ## 0.7.0 (13.6.2016)
 
 - Test with Clojure 1.7.0 & 1.8.0
