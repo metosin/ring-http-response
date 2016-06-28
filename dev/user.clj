@@ -8,7 +8,7 @@
    [101 "Switching Protocols" "The server is switching protocols because the client requested the switch."]
    [102 "Processing" "The server is processing the request but no response is available yet."]
    [200 "OK" "OK"]
-   [201 "Created" "The request has been fulfilled and resulted in a new resource being created."]
+   [201 "Created" "The request has been fulfilled and resulted in a new resource being created." {:location? true, :entity? true}]
    [202 "Accepted" "The request has been accepted for processing but the processing has not been completed."]
    [203 "Non-Authoritative Information" "The server successfully processed the request but is returning information that may be from another source."]
    [204 "No Content" "The server successfully processed the request, but is not returning any content. Usually used as a response to a successful delete request." {:entity? false}]
@@ -89,7 +89,8 @@
      {:fn-name (lc/lower-hyphen-name name)
       :status status
       :name name
-      :description description}
+      :description description
+      :location-entity? (and (:location? options) (:entity? options))}
      (get-type status)
      options)))
 
@@ -99,9 +100,9 @@
        types))
 
 (def imports
-  ["status" "header" "file-response" "content-type" "charset" "set-cookie"
-   "response?" "url-response" "resource-response" "get-header"
-   "find-header" "get-header" "resource-data"])
+  ["status" "header" "file-response" "content-type" "find-header" "get-header"
+   "update-header" "charset" "set-cookie" "response?" "resource-data"
+   "url-response" "resource-response"])
 
 (stencil.loader/set-cache (clojure.core.cache/ttl-cache-factory {} :ttl 0))
 

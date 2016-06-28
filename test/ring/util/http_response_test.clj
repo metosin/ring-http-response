@@ -12,7 +12,8 @@
 
   (testing "Success"
     (is (= {:status 200 :headers {} :body "body"} (ok "body")))
-    (is (= {:status 201 :headers {} :body "body"} (created "body")))
+    (is (= {:status 201 :headers {"Location" "/url"} :body nil} (created "/url")))
+    (is (= {:status 201 :headers {"Location" "/url"} :body "body"} (created "/url" "body")))
     (is (= {:status 202 :headers {} :body "body"} (accepted "body")))
     (is (= {:status 203 :headers {} :body "body"} (non-authoritative-information "body")))
     (is (= {:status 204 :headers {} :body ""} (no-content)))
