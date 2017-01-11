@@ -109,6 +109,6 @@ These include: `status`, `header`, `file-response`, `content-type`, `find-header
 ## License
 Original [code](https://github.com/spray/spray/blob/master/spray-http/src/main/scala/spray/http/StatusCode.scala): Copyright © 2011-2013 the spray project <http://spray.io>.
 
-Copyright © 2014-2016 [Metosin Oy](http://www.metosin.fi)
+Copyright © 2014-2017 [Metosin Oy](http://www.metosin.fi)
 
 Distributed under the Eclipse Public License, the same as Clojure.

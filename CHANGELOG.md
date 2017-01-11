@@ -1,3 +1,11 @@
+## 0.8.1 (11.1.2017)
+
+- Update Ring to [avoid a path traversal vulnerability](https://groups.google.com/forum/#!topic/clojure/YDrKBV26rnA).
+
+```clj
+[ring/ring-core "1.5.1"] is available but we use "1.5.0"
+```
+
 ## 0.8.0 (28.6.2016)
 
 - **BREAKING**: first argument for `created` is `url`, not `body`. Has 2-arity version which takes both `url` & `body` in align to the [spec](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) & [ring](https://github.com/ring-clojure/ring/blob/master/ring-core/src/ring/util/response.clj#L37)
