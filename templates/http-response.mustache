@@ -1,13 +1,14 @@
 (ns ring.util.http-response
-  (:require [slingshot.slingshot :refer [throw+]]
-            [potemkin.namespaces :as p]
+  (:require [potemkin.namespaces :as p]
              ring.util.response))
 
 (defn throw!
-  "Slingshots an exception with :type :ring.util.http-response/response and the full response in :response"
+  "Throwns an exception with ex-info:
+  {:type :ring.util.http-response/response
+   :response response}"
   [response]
   {:pre (map? response)}
-  (throw+ {:type ::response :response response}))
+  (throw (ex-info (str "HTTP "(:status response)) {:type ::response :response response})))
 {{#template}}
 
 {{#location-entity?}}

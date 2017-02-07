@@ -1,6 +1,5 @@
 (ns ring.util.http-response-test
   (:require [clojure.test :refer :all]
-            [slingshot.slingshot :refer [try+]]
             [ring.util.http-response :refer :all]))
 
 (deftest http-responses-test
@@ -81,24 +80,24 @@
     (is (= {:status 598 :headers {} :body "body"} (network-read-timeout "body")))
     (is (= {:status 599 :headers {} :body "body"} (network-connect-timeout "body")))))
 
+(declare slingshots?)
 (defmethod assert-expr 'slingshots? [msg form]
   (let [expected (second form)
         body (nthnext form 2)]
-    `(try+
+    `(try
        ~@body
        (do-report {:type :fail, :message ~msg,
                    :expected ~expected, :actual nil})
-       (catch [:type :ring.util.http-response/response] e#
-         (if (= ~expected (:response e#))
-           (do-report {:type :pass, :message ~msg,
-                       :expected (:response e#) :actual (:response e#)})
-           (do-report {:type :fail, :message ~msg,
-                       :expected ~expected, :actual (:response e#)}))
-         e#)
-       (catch Object e#
-         (do-report {:type :fail, :message ~msg,
-                     :expected ~expected, :actual nil})
-         e#))))
+       (catch Exception e#
+         (let [data# (ex-data e#)]
+           (if (= :ring.util.http-response/response (:type data#))
+             (if (= ~expected (:response data#))
+               (do-report {:type :pass, :message ~msg,
+                           :expected (:response data#) :actual (:response data#)})
+               (do-report {:type :fail, :message ~msg,
+                           :expected ~expected, :actual (:response data#)}))
+             (do-report {:type :fail, :message ~msg,
+                         :expected ~expected, :actual nil})))))))
 
 (deftest slingshot-error-responses-test
 

@@ -6,8 +6,7 @@
             :distribution :repo
             :comments "same as Clojure"}
   :dependencies [[ring/ring-core "1.5.1"]
-                 [potemkin "0.4.3"]
-                 [slingshot "0.12.2"]]
+                 [potemkin "0.4.3"]]
   :profiles {:dev {:plugins [[lein-clojars "0.9.1"]]
                    :resource-paths ["templates"]
                    :source-paths ["dev"]
