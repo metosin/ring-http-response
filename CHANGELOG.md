@@ -1,3 +1,13 @@
+## UNRELEASED
+
+- add ring-async support to middleware
+
+- removed dependencies:
+
+```clj
+[slingshot "0.12.2"]
+```
+
 ## 0.8.1 (11.1.2017)
 
 - Update Ring to [avoid a path traversal vulnerability](https://groups.google.com/forum/#!topic/clojure/YDrKBV26rnA).
