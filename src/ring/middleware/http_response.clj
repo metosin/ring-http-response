@@ -6,7 +6,12 @@
       (respond response)
       (raise e))))
 
-(defn wrap-http-response [handler]
+(defn wrap-http-response
+  "Catches thrown http-exceptions and converts them into
+   corresponding ring-responses. e.g. exception from
+   (bad-request! \"bad\") is converted into (bad-request \"bad\").
+   Supports async-ring."
+  [handler]
   (let [throw #(throw %)]
     (fn
       ([request]
