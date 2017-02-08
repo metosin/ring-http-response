@@ -1,4 +1,4 @@
-(defproject metosin/ring-http-response "0.8.2-SNAPSHOT"
+(defproject metosin/ring-http-response "0.8.2"
   :description "Handling HTTP Statuses with Clojure(Script)"
   :url "https://github.com/metosin/ring-http-response"
   :license {:name "Eclipse Public License"

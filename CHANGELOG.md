@@ -1,6 +1,7 @@
-## UNRELEASED
+## 0.8.2 (8.2.2017)
 
-- add ring-async support to middleware
+- Add ring-async support to `ring.middleware.http-response/wrap-http-response`
+- Use `ex-info` & `ex-data` instead of slingshot in exceptions
 
 - removed dependencies:
 

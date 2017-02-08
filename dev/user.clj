@@ -120,3 +120,6 @@
           (mustache/render-file "http-predicates.mustache"
                                 {:template template
                                  :types type-template}))))
+
+(comment
+  (generate!))
