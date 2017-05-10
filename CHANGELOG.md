@@ -1,3 +1,14 @@
+## 0.9.0 (10.5.2017)
+
+- require `[ring/ring-core "1.6.0"]`
+  - map also `get-charset` to `ring.util.http-response`
+- run tests with Clojure `1.9.0-alpha16`
+- updated dependencies:
+
+```
+[ring/ring-core "1.6.0"] is available but we use "1.5.1"
+```
+
 ## 0.8.2 (8.2.2017)
 
 - Add ring-async support to `ring.middleware.http-response/wrap-http-response`

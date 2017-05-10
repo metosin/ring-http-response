@@ -1136,3 +1136,8 @@
   (println "Can't import ring.util.response/resource-response, try updating to Ring 1.5.0+"))
 (p/import-vars [ring.util.response resource-response])
 
+;; get-charset
+(if-not (ns-resolve 'ring.util.response 'get-charset)
+  (println "Can't import ring.util.response/get-charset, try updating to Ring 1.5.0+"))
+(p/import-vars [ring.util.response get-charset])
+
