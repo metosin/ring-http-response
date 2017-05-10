@@ -1,7 +1,7 @@
 ## 0.9.0 (10.5.2017)
 
 - require `[ring/ring-core "1.6.0"]`
-  - map also `get-charset` to `ring.util.http-response`
+  - `get-charset` added to `ring.util.http-response`
 - run tests with Clojure `1.9.0-alpha16`
 - updated dependencies:
 
