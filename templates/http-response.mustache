@@ -54,7 +54,7 @@
 {{#imports}}
 ;; {{.}}
 (if-not (ns-resolve 'ring.util.response '{{.}})
-  (println "Can't import ring.util.response/{{.}}, try updating to Ring 1.5.0+"))
+  (println "Can't import ring.util.response/{{.}}, try updating to Ring 1.6.0+"))
 (p/import-vars [ring.util.response {{{.}}}])
 
 {{/imports}}
