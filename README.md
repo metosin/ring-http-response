@@ -70,7 +70,7 @@ status/not-found
 ### Throwing error responses
 
 All response functions for HTTP error response have a exception throwing sibling with a bang in the name
-(`bad-request` & `bad-request!`). These functions [Slingshot](https://github.com/scgilardi/slingshot) the
+(`bad-request` & `bad-request!`). These functions throw the
 response wrapped in an `ExceptionInfo`.
 
 ```clojure
@@ -78,14 +78,14 @@ response wrapped in an `ExceptionInfo`.
 ; {:status 400, :headers {}, :body "fail"}
 
 (bad-request! "fail")
-; clojure.lang.ExceptionInfo: throw+: {:type :ring.util.http-response/response, :response {:status 400, :headers {}, :body "fail"}}
+; clojure.lang.ExceptionInfo: throw: {:type :ring.util.http-response/response, :response {:status 400, :headers {}, :body "fail"}}
 ```
 
-There is also a `throw!` function to slingshot any kind response in an exception.
+There is also a `throw!` function to throw any kind response in an exception.
 
 ```clojure
 (throw! (header (bad-request "body") "header" "value"))
-; clojure.lang.ExceptionInfo: throw+: {:type :ring.util.http-response/response, :response {:status 400, :headers {"header" "value"}, :body "body"}}
+; clojure.lang.ExceptionInfo: throw: {:type :ring.util.http-response/response, :response {:status 400, :headers {"header" "value"}, :body "body"}}
 ```
 
 ### Catching thrown HTTP responses

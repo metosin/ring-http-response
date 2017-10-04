@@ -37,7 +37,9 @@
 (defn {{fn-name}}!
   "{{status}} {{name}} ({{type}})
   {{description}}
-  Slingshots an exception with :type :ring.util.http-response/response and the full response in :response"
+  Throws an exception with ex-info:
+  {:type :ring.util.http-response/response
+   :response response}"
   {{#entity?}}([] ({{fn-name}}! nil)){{/entity?}}
   ([body]
    (throw!
