@@ -1,4 +1,4 @@
-# ring-http-response [![Build Status](https://travis-ci.org/metosin/ring-http-response.svg?branch=master)](https://travis-ci.org/metosin/ring-http-response) [![Downloads](https://jarkeeper.com/metosin/ring-http-response/downloads.svg)](https://jarkeeper.com/metosin/ring-http-response) [![Dependencies Status](http://jarkeeper.com/metosin/ring-http-response/status.svg)](http://jarkeeper.com/metosin/ring-http-response)
+# ring-http-response [![Build Status](https://travis-ci.org/metosin/ring-http-response.svg?branch=master)](https://travis-ci.org/metosin/ring-http-response)
 
 Handling HTTP Statuses with Clojure(Script), originally ported from the awesome [Spray](http://spray.io/).
 Mostly a drop-in-place replacement for `ring.util.response`.

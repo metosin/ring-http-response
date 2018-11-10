@@ -1,3 +1,12 @@
+## 0.9.1 (10.11.2018)
+
+- updated dependencies:
+
+```
+[ring/ring-core "1.7.1"] is available but we use "1.6.0"
+[potemkin "0.4.5"] is available but we use "0.4.3"
+```
+
 ## 0.9.0 (10.5.2017)
 
 - require `[ring/ring-core "1.6.0"]`
