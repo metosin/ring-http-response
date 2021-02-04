@@ -1,3 +1,11 @@
+## 0.9.2 (4.2.2021)
+
+- updated dependencies:
+
+```
+[ring/ring-core "1.9.0"] is available but we use "1.7.1"
+```
+
 ## 0.9.1 (10.11.2018)
 
 - updated dependencies:

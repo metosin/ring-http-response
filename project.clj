@@ -1,11 +1,11 @@
-(defproject metosin/ring-http-response "0.9.1"
+(defproject metosin/ring-http-response "0.9.2"
   :description "Handling HTTP Statuses with Clojure(Script)"
   :url "https://github.com/metosin/ring-http-response"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"
             :distribution :repo
             :comments "same as Clojure"}
-  :dependencies [[ring/ring-core "1.8.2"]
+  :dependencies [[ring/ring-core "1.9.0"]
                  [potemkin "0.4.5"]]
   :profiles {:dev {:plugins [[lein-clojars "0.9.1"]]
                    :resource-paths ["templates"]
