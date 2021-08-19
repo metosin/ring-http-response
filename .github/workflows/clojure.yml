@@ -25,6 +25,6 @@ jobs:
     - name: Setup Clojure
       uses: DeLaGuardo/setup-clojure@master
       with:
-        lein: 2.7.1
+        lein: latest
     - name: Run tests
       run: lein all
