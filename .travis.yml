@@ -2,6 +2,6 @@ language: clojure
 lein: 2.7.1
 script: lein do clean, all
 jdk:
-  - openjdk6
-  - openjdk7
-  - oraclejdk7
+  - openjdk9
+  - openjdk11
+  - openjdk16
