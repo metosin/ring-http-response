@@ -15,6 +15,7 @@
                                   [stencil "0.5.0"]]}
              :1.7 {:dependencies [[org.clojure/clojure "1.7.0"]]}
              :1.8 {:dependencies [[org.clojure/clojure "1.8.0"]]}
-             :1.9 {:dependencies [[org.clojure/clojure "1.9.0"]]}}
+             :1.9 {:dependencies [[org.clojure/clojure "1.9.0"]]}
+             :1.10 {:dependencies [[org.clojure/clojure "1.10.3"]]}}
   :deploy-repositories [["releases" :clojars]]
-  :aliases {"all" ["with-profile" "dev:dev,1.7:dev,1.8:dev,1.9" "test"]})
+  :aliases {"all" ["with-profile" "dev:dev,1.7:dev,1.8:dev,1.9:dev,1.10" "test"]})
