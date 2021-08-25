@@ -106,6 +106,15 @@ See the [facts](https://github.com/metosin/ring-http-response/blob/master/test/r
 These include: `status`, `header`, `file-response`, `content-type`, `find-header`, `get-header`, `update-header`, `charset`, `set-cookie`, `response?`
 `resource-data`, `url-response` and `resource-response`.
 
+## Making a release
+
+- Update `CHANGELOG.md` and increment the version number in `project.clj`
+- Commit
+- Tag with the release number
+- Push to Github
+- Create a Github release by editing the tag you just created on <https://github.com/metosin/ring-http-response/tags>
+- The [Github Actions release workflow](.github/workflows/release.yml) should fire and deploy a release to clojars
+
 ## License
 Original [code](https://github.com/spray/spray/blob/master/spray-http/src/main/scala/spray/http/StatusCode.scala): Copyright © 2011-2013 the spray project <http://spray.io>.
 
