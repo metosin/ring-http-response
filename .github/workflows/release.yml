@@ -1,0 +1,29 @@
+name: Release
+
+on:
+  release:
+    types:
+      - published # reacts to releases and prereleases, but not their drafts
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: "Setup Java 8"
+      uses: actions/setup-java@v1.4.3
+      with:
+        java-version: 8
+    - name: Setup Clojure
+      uses: DeLaGuardo/setup-clojure@master
+      with:
+        lein: latest
+    - name: Run tests
+      run: lein test
+    - name: Build uberjar
+      run: lein uberjar
+    - name: Deploy to Clojars
+      run: lein deploy
+      env:
+        CLOJARS_USER: metosinci
+        CLOJARS_DEPLOY_TOKEN: "${{ secrets.CLOJARS_DEPLOY_TOKEN }}"
