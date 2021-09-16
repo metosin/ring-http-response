@@ -109,10 +109,9 @@ These include: `status`, `header`, `file-response`, `content-type`, `find-header
 ## Making a release
 
 - Update `CHANGELOG.md` and increment the version number in `project.clj`
-- Commit
-- Tag with the release number
-- Push to Github
-- Create a Github release by editing the tag you just created on <https://github.com/metosin/ring-http-response/tags>
+- Commit and push to Github
+- Create a Github release [here](https://github.com/metosin/ring-http-response/releases)
+  - Use the version number of the release for the tag name
 - The [Github Actions release workflow](.github/workflows/release.yml) should fire and deploy a release to clojars
 
 ## License

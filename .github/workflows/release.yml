@@ -20,8 +20,8 @@ jobs:
         lein: latest
     - name: Run tests
       run: lein test
-    - name: Build uberjar
-      run: lein uberjar
+    - name: Build jar
+      run: lein jar
     - name: Deploy to Clojars
       run: lein deploy
       env:
