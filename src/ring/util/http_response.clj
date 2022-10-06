@@ -43,12 +43,21 @@
     :headers {}
     :body body}))
 
+(defn ^{:private true} 
+  url-like? 
+  "Is x a URL-like parameter?"
+  [x]
+  (or (string? x)
+      (instance? java.net.URI x)
+      (instance? java.net.URL x)))
+
 (defn created
   "201 Created (Success)
   The request has been fulfilled and resulted in a new resource being created."
   ([] (created nil))
   ([url] (created url nil))
   ([url body]
+   {:pre [(or (nil? url) (url-like? url))]}
    {:status 201
     :headers {"Location" url}
     :body body}))
@@ -127,6 +136,7 @@
   "300 Multiple Choices (Redirection)
   There are multiple options for the resource that the client may follow."
   ([url]
+   {:pre [(url-like? url)]}
    {:status 300
     :headers {"Location" url}
     :body ""}))
@@ -135,6 +145,7 @@
   "301 Moved Permanently (Redirection)
   This and all future requests should be directed to the given URI."
   ([url]
+   {:pre [(url-like? url)]}
    {:status 301
     :headers {"Location" url}
     :body ""}))
@@ -143,6 +154,7 @@
   "302 Found (Redirection)
   The resource was found but at a different URI."
   ([url]
+   {:pre [(url-like? url)]}
    {:status 302
     :headers {"Location" url}
     :body ""}))
@@ -151,6 +163,7 @@
   "303 See Other (Redirection)
   The response to the request can be found under another URI using a GET method."
   ([url]
+   {:pre [(url-like? url)]}
    {:status 303
     :headers {"Location" url}
     :body ""}))
@@ -167,6 +180,7 @@
   "305 Use Proxy (Redirection)
   This single request is to be repeated via the proxy given by the Location field."
   ([url]
+   {:pre [(url-like? url)]}
    {:status 305
     :headers {"Location" url}
     :body ""}))
@@ -175,6 +189,7 @@
   "307 Temporary Redirect (Redirection)
   The request should be repeated with another URI but future requests can still use the original URI."
   ([url]
+   {:pre [(url-like? url)]}
    {:status 307
     :headers {"Location" url}
     :body ""}))
@@ -183,6 +198,7 @@
   "308 Permanent Redirect (Redirection)
   The request and all future requests should be repeated using another URI."
   ([url]
+   {:pre [(url-like? url)]}
    {:status 308
     :headers {"Location" url}
     :body ""}))
