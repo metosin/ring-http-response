@@ -5,7 +5,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"
             :distribution :repo
             :comments "same as Clojure"}
-  :dependencies [[ring/ring-core "1.9.4"]
+  :dependencies [[ring/ring-core "1.10.0"]
                  [potemkin "0.4.5"]]
   :profiles {:dev {:plugins [[lein-clojars "0.9.1"]]
                    :resource-paths ["templates"]
