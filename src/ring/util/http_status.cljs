@@ -39,6 +39,7 @@
 (def unsupported-media-type 415)
 (def requested-range-not-satisfiable 416)
 (def expectation-failed 417)
+(def im-a-teapot 418)
 (def enhance-your-calm 420)
 (def unprocessable-entity 422)
 (def locked 423)
@@ -147,6 +148,8 @@
         :description "The client has asked for a portion of the file but the server cannot supply that portion."}
    417 {:name "Expectation Failed"
         :description "The server cannot meet the requirements of the Expect request-header field."}
+   418 {:name "I'm a teapot"
+        :description "Any attempt to brew coffee with a teapot should result in the error code &quot;418 I'm a teapot&quot;. The resulting entity body MAY be short and stout."}
    420 {:name "Enhance Your Calm"
         :description "You are being rate-limited."}
    422 {:name "Unprocessable Entity"

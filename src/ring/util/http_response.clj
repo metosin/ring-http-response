@@ -583,6 +583,28 @@
       :headers {}
       :body body})))
 
+(defn im-a-teapot
+  "418 I'm a teapot (ClientError)
+  Any attempt to brew coffee with a teapot should result in the error code &quot;418 I'm a teapot&quot;. The resulting entity body MAY be short and stout."
+  ([] (im-a-teapot nil))
+  ([body]
+   {:status 418
+    :headers {}
+    :body body}))
+
+(defn im-a-teapot!
+  "418 I'm a teapot (ClientError)
+  Any attempt to brew coffee with a teapot should result in the error code &quot;418 I'm a teapot&quot;. The resulting entity body MAY be short and stout.
+  Throws an exception with ex-info:
+  {:type :ring.util.http-response/response
+   :response response}"
+  ([] (im-a-teapot! nil))
+  ([body]
+   (throw!
+     {:status 418
+      :headers {}
+      :body body})))
+
 (defn enhance-your-calm
   "420 Enhance Your Calm (ClientError)
   You are being rate-limited."
