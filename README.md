@@ -1,4 +1,6 @@
-# ring-http-response ![Build Status](https://github.com/metosin/ring-http-response/actions/workflows/clojure.yml/badge.svg)
+# ring-http-response
+![Build Status](https://github.com/metosin/ring-http-response/actions/workflows/clojure.yml/badge.svg)
+[![cljdoc badge](https://cljdoc.xyz/badge/metosin/ring-http-response)](https://cljdoc.xyz/d/metosin/ring-http-response/CURRENT)
 
 Handling HTTP Statuses with Clojure(Script), originally ported from the awesome [Spray](http://spray.io/).
 Mostly a drop-in-place replacement for `ring.util.response`.
@@ -109,6 +111,11 @@ These include: `status`, `header`, `file-response`, `content-type`, `find-header
 ## Adding new HTTP status codes
 
 All code is generated using [Mustache](https://mustache.github.io/) templates, see [user.clj](https://github.com/metosin/ring-http-response/blob/master/dev/user.clj).
+
+```
+lein repl
+user=> (generate!)
+```
 
 ## Making a release
 
