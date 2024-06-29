@@ -583,31 +583,27 @@
       :headers {}
       :body body})))
 
-(defn im-a-teapot
+(defn i'm-a-teapot
   "418 I'm a teapot (ClientError)
-  Any attempt to brew coffee with a teapot should result in the error
-   code \"418 I'm a teapot\". The resulting entity body MAY be short and
-   stout. "
-  ([] (expectation-failed nil))
+  Any attempt to brew coffee with a teapot should result in the error code &quot;418 I'm a teapot&quot;. The resulting entity body MAY be short and stout."
+  ([] (i'm-a-teapot nil))
   ([body]
    {:status 418
     :headers {}
     :body body}))
 
-(defn im-a-teapot!
+(defn i'm-a-teapot!
   "418 I'm a teapot (ClientError)
-  Any attempt to brew coffee with a teapot should result in the error
-   code \"418 I'm a teapot\". The resulting entity body MAY be short and
-   stout.
+  Any attempt to brew coffee with a teapot should result in the error code &quot;418 I'm a teapot&quot;. The resulting entity body MAY be short and stout.
   Throws an exception with ex-info:
   {:type :ring.util.http-response/response
    :response response}"
-  ([] (expectation-failed! nil))
+  ([] (i'm-a-teapot! nil))
   ([body]
    (throw!
-    {:status 418
-     :headers {}
-     :body body})))
+     {:status 418
+      :headers {}
+      :body body})))
 
 (defn enhance-your-calm
   "420 Enhance Your Calm (ClientError)
@@ -1148,7 +1144,7 @@
 
 (defn network-read-timeout!
   "598 Network read timeout (ServerError)
-
+  
   Throws an exception with ex-info:
   {:type :ring.util.http-response/response
    :response response}"
@@ -1170,7 +1166,7 @@
 
 (defn network-connect-timeout!
   "599 Network connect timeout (ServerError)
-
+  
   Throws an exception with ex-info:
   {:type :ring.util.http-response/response
    :response response}"
@@ -1254,3 +1250,4 @@
 (if-not (ns-resolve 'ring.util.response 'get-charset)
   (println "Can't import ring.util.response/get-charset, try updating to Ring 1.6.0+"))
 (p/import-vars [ring.util.response get-charset])
+

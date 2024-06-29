@@ -43,6 +43,7 @@
    [415 "Unsupported Media Type" "The request entity has a media type which the server or resource does not support."]
    [416 "Requested Range Not Satisfiable" "The client has asked for a portion of the file but the server cannot supply that portion."]
    [417 "Expectation Failed" "The server cannot meet the requirements of the Expect request-header field."]
+   [418 "I'm a teapot" "Any attempt to brew coffee with a teapot should result in the error code \"418 I'm a teapot\". The resulting entity body MAY be short and stout."]   
    [420 "Enhance Your Calm" "You are being rate-limited."]
    [422 "Unprocessable Entity" "The request was well-formed but was unable to be followed due to semantic errors."]
    [423 "Locked" "The resource that is being accessed is locked."]
