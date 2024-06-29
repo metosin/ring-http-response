@@ -12,3 +12,7 @@ pom.xml.asc
 ccw*
 /.idea
 /*.iml
+;; Clojure tooling
+.cache
+.lsp
+.calva
