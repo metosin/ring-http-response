@@ -1,3 +1,13 @@
+## 0.9.4 (29.6.2024)
+
+- add teapot functionality [#33](https://github.com/metosin/ring-http-response/pull/33)
+- updated dependencies:
+
+```clojure
+[ring/ring-core "1.12.2"] is available but we use "1.10.0"
+[potemkin "0.4.7"] is available but we use "0.4.5"
+```
+
 ## 0.9.3 (25.8.2021)
 
 - updated dependencies:
