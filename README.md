@@ -88,7 +88,7 @@ There is also a `throw!` function to throw any kind response in an exception.
 ; clojure.lang.ExceptionInfo: throw: {:type :ring.util.http-response/response, :response {:status 400, :headers {"header" "value"}, :body "body"}}
 ```
 
-### Catching thrown HTTP status codes
+### Catching thrown HTTP responses
 
 Middleware `ring.middleware.http-response/wrap-http-response` catches thrown HTTP-responses and returns the responses within.
 See the [facts](https://github.com/metosin/ring-http-response/blob/master/test/ring/middleware/http_response_test.clj) for examples.
@@ -106,9 +106,9 @@ See the [facts](https://github.com/metosin/ring-http-response/blob/master/test/r
 These include: `status`, `header`, `file-response`, `content-type`, `find-header`, `get-header`, `update-header`, `charset`, `set-cookie`, `response?`
 `resource-data`, `url-response` and `resource-response`.
 
-## Adding new responess
+## Adding new HTTP status codes
 
-All code is generated using [Mustache](https://mustache.github.io/) templates, see [user.cl](https://github.com/metosin/ring-http-response/blob/master/dev/user.clj).
+All code is generated using [Mustache](https://mustache.github.io/) templates, see [user.clj](https://github.com/metosin/ring-http-response/blob/master/dev/user.clj).
 
 ## Making a release
 
