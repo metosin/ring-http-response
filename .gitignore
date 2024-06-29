@@ -13,6 +13,6 @@ ccw*
 /.idea
 /*.iml
 ;; Clojure tooling
-.clj-kondo
+.cache
 .lsp
 .calva
