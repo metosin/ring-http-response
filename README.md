@@ -106,6 +106,10 @@ See the [facts](https://github.com/metosin/ring-http-response/blob/master/test/r
 These include: `status`, `header`, `file-response`, `content-type`, `find-header`, `get-header`, `update-header`, `charset`, `set-cookie`, `response?`
 `resource-data`, `url-response` and `resource-response`.
 
+## Adding new responess
+
+All code is generated using [Mustache](https://mustache.github.io/) templates, see [user.cl](https://github.com/metosin/ring-http-response/blob/master/dev/user.clj).
+
 ## Making a release
 
 - Update `CHANGELOG.md` and increment the version number in `project.clj`
