@@ -269,7 +269,7 @@
   {:pre (map? response)}
   (= (:status response) 417))
 
-(defn i'm-a-teapot?
+(defn im-a-teapot?
   "Checks whether the response has status code 418"
   [response]
   {:pre (map? response)}

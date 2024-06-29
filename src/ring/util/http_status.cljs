@@ -39,7 +39,7 @@
 (def unsupported-media-type 415)
 (def requested-range-not-satisfiable 416)
 (def expectation-failed 417)
-(def i'm-a-teapot 418)
+(def im-a-teapot 418)
 (def enhance-your-calm 420)
 (def unprocessable-entity 422)
 (def locked 423)

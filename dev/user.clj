@@ -1,5 +1,6 @@
 (ns user
   (:require [org.tobereplaced.lettercase :as lc]
+            [clojure.string :as str]
             [stencil.core :as mustache]))
 
 (def responses
@@ -87,7 +88,7 @@
 (def template
   (for [[status name description options] responses]
     (merge
-     {:fn-name (lc/lower-hyphen-name name)
+     {:fn-name (str/replace (lc/lower-hyphen-name name) #"'" "")
       :status status
       :name name
       :description description

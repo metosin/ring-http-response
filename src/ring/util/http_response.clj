@@ -583,22 +583,22 @@
       :headers {}
       :body body})))
 
-(defn i'm-a-teapot
+(defn im-a-teapot
   "418 I'm a teapot (ClientError)
   Any attempt to brew coffee with a teapot should result in the error code &quot;418 I'm a teapot&quot;. The resulting entity body MAY be short and stout."
-  ([] (i'm-a-teapot nil))
+  ([] (im-a-teapot nil))
   ([body]
    {:status 418
     :headers {}
     :body body}))
 
-(defn i'm-a-teapot!
+(defn im-a-teapot!
   "418 I'm a teapot (ClientError)
   Any attempt to brew coffee with a teapot should result in the error code &quot;418 I'm a teapot&quot;. The resulting entity body MAY be short and stout.
   Throws an exception with ex-info:
   {:type :ring.util.http-response/response
    :response response}"
-  ([] (i'm-a-teapot! nil))
+  ([] (im-a-teapot! nil))
   ([body]
    (throw!
      {:status 418
