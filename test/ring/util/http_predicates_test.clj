@@ -436,6 +436,7 @@
     (is (thrown? AssertionError (network-read-timeout? nil)))
     (is (thrown? AssertionError (network-read-timeout? 123)))
 
+    (is (thrown? AssertionError (network-connect-timeout? "not-map")))
     (is (thrown? AssertionError (network-connect-timeout? :not-map)))
     (is (thrown? AssertionError (network-connect-timeout? nil)))
-    (is (thrown? AssertionError (network-connect-timeout? 123))) (is (thrown? AssertionError (network-connect-timeout? "not-map")))))
+    (is (thrown? AssertionError (network-connect-timeout? 123)))))
