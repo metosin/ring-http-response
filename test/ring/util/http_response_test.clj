@@ -155,6 +155,13 @@
   (is (slingshots? {:status 400 :headers {} :body "body"} (throw! (bad-request "body"))))
   (is (slingshots? {:status 400 :headers {"a" "1"} :body "body"} (throw! (header (bad-request "body") "a" "1")))))
 
+(deftest throw!-parameter-validation-test
+  (testing "Must throw assertion error when `response` parameter does not pass `map?` pre-condition"
+    (is (thrown? AssertionError (throw! "not-map")))
+    (is (thrown? AssertionError (throw! :not-map)))
+    (is (thrown? AssertionError (throw! nil)))
+    (is (thrown? AssertionError (throw! 123)))))
+
 (deftest imported-vars-test
   (doseq [v [#'status
              #'header
