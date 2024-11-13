@@ -1,6 +1,8 @@
 (ns ring.util.http-response-test
   (:require [clojure.test :refer :all]
-            [ring.util.http-response :refer :all]))
+            [ring.util.http-response :refer :all]
+            [clojure.string :as str]
+            [clojure.repl :refer [demunge]]))
 
 (deftest http-responses-test
 
@@ -11,8 +13,8 @@
 
   (testing "Success"
     (is (= {:status 200 :headers {} :body "body"} (ok "body")))
-    (is (= {:status 201 :headers {"Location" "/url"} :body nil} (created "/url")))
-    (is (= {:status 201 :headers {"Location" "/url"} :body "body"} (created "/url" "body")))
+    (is (= {:status 201 :headers {"location" "/url"} :body nil} (created "/url")))
+    (is (= {:status 201 :headers {"location" "/url"} :body "body"} (created "/url" "body")))
     (is (= {:status 202 :headers {} :body "body"} (accepted "body")))
     (is (= {:status 203 :headers {} :body "body"} (non-authoritative-information "body")))
     (is (= {:status 204 :headers {} :body ""} (no-content)))
@@ -23,14 +25,14 @@
     (is (= {:status 226 :headers {} :body "body"} (im-used "body"))))
 
   (testing "Redirection"
-    (is (= {:status 300 :headers {"Location" "/url"} :body ""} (multiple-choices "/url")))
-    (is (= {:status 301 :headers {"Location" "/url"} :body ""} (moved-permanently "/url")))
-    (is (= {:status 302 :headers {"Location" "/url"} :body ""} (found "/url")))
-    (is (= {:status 303 :headers {"Location" "/url"} :body ""} (see-other "/url")))
+    (is (= {:status 300 :headers {"location" "/url"} :body ""} (multiple-choices "/url")))
+    (is (= {:status 301 :headers {"location" "/url"} :body ""} (moved-permanently "/url")))
+    (is (= {:status 302 :headers {"location" "/url"} :body ""} (found "/url")))
+    (is (= {:status 303 :headers {"location" "/url"} :body ""} (see-other "/url")))
     (is (= {:status 304 :headers {} :body ""} (not-modified)))
-    (is (= {:status 305 :headers {"Location" "/url"} :body ""} (use-proxy "/url")))
-    (is (= {:status 307 :headers {"Location" "/url"} :body ""} (temporary-redirect "/url")))
-    (is (= {:status 308 :headers {"Location" "/url"} :body ""} (permanent-redirect "/url"))))
+    (is (= {:status 305 :headers {"location" "/url"} :body ""} (use-proxy "/url")))
+    (is (= {:status 307 :headers {"location" "/url"} :body ""} (temporary-redirect "/url")))
+    (is (= {:status 308 :headers {"location" "/url"} :body ""} (permanent-redirect "/url"))))
 
   (testing "ClientError"
     (is (= {:status 400 :headers {} :body "body"} (bad-request "body")))
@@ -80,6 +82,104 @@
     (is (= {:status 511 :headers {} :body "body"} (network-authentication-required "body")))
     (is (= {:status 598 :headers {} :body "body"} (network-read-timeout "body")))
     (is (= {:status 599 :headers {} :body "body"} (network-connect-timeout "body")))))
+
+
+;; Functions that can be called with 1 argument
+(def one-args-response-fns
+  [multiple-choices
+   moved-permanently
+   found
+   see-other
+   use-proxy
+   temporary-redirect
+   permanent-redirect])
+
+;; Functions that can be called with 0 arguments
+(def zero-arg-response-fns
+  [continue
+   switching-protocols
+   processing
+   ok
+   created
+   accepted
+   non-authoritative-information
+   no-content
+   reset-content
+   partial-content
+   multi-status
+   already-reported
+   im-used
+   not-modified
+   bad-request
+   unauthorized
+   payment-required
+   forbidden
+   not-found
+   method-not-allowed
+   not-acceptable
+   proxy-authentication-required
+   request-timeout
+   conflict
+   gone
+   length-required
+   precondition-failed
+   request-entity-too-large
+   request-uri-too-long
+   unsupported-media-type
+   requested-range-not-satisfiable
+   expectation-failed
+   im-a-teapot
+   enhance-your-calm
+   unprocessable-entity
+   locked
+   failed-dependency
+   unordered-collection
+   upgrade-required
+   precondition-required
+   too-many-requests
+   request-header-fields-too-large
+   retry-with
+   blocked-by-windows-parental-controls
+   unavailable-for-legal-reasons
+   internal-server-error
+   not-implemented
+   bad-gateway
+   service-unavailable
+   gateway-timeout
+   http-version-not-supported
+   variant-also-negotiates
+   insufficient-storage
+   loop-detected
+   bandwidth-limit-exceeded
+   not-extended
+   network-authentication-required
+   network-read-timeout
+   network-connect-timeout])
+
+(defn- pretty-demunge [f]
+  (-> (str f) demunge (str/split #"@") first))
+
+;; https://github.com/ring-clojure/ring/blob/master/SPEC.md
+(deftest ring-spec-test
+  (testing "`:headers` is a clojure map of lowercased header name strings to corresponding header value strings"
+    ;; for functions that have a one-arity definition
+    (doseq [f one-args-response-fns
+            :let [request-map (f "foo")
+                  headers (:headers request-map)]]
+      (testing (pretty-demunge f)
+        (is (map? headers))
+        (is (every? (fn [header-name]
+                      (= (str/lower-case header-name) header-name))
+                    (keys headers))))
+    ;; for functions that have a zero-arity definition
+      (doseq [f zero-arg-response-fns
+              :let [request-map (f)
+                    headers (:headers request-map)]]
+        (testing (pretty-demunge f)
+          (is (map? headers))
+          (is (every? (fn [header-name]
+                        (= (str/lower-case header-name) header-name))
+                      (keys headers))))))))
 
 (declare slingshots?)
 (defmethod assert-expr 'slingshots? [msg form]
