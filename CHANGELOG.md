@@ -1,3 +1,8 @@
+## 0.9.5 (unreleased)
+
+**BREAKING**: Header names are now lowercase to comply with Ring spec
+- Changed "Location" header to "location" in redirect and creation responses
+
 ## 0.9.4 (29.6.2024)
 
 - add teapot functionality [#33](https://github.com/metosin/ring-http-response/pull/33)
