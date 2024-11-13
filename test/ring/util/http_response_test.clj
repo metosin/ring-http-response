@@ -170,16 +170,16 @@
         (is (map? headers))
         (is (every? (fn [header-name]
                       (= (str/lower-case header-name) header-name))
-                    (keys headers))))
+                    (keys headers)))))
     ;; for functions that have a zero-arity definition
-      (doseq [f zero-arg-response-fns
-              :let [request-map (f)
-                    headers (:headers request-map)]]
-        (testing (pretty-demunge f)
-          (is (map? headers))
-          (is (every? (fn [header-name]
-                        (= (str/lower-case header-name) header-name))
-                      (keys headers))))))))
+    (doseq [f zero-arg-response-fns
+            :let [request-map (f)
+                  headers (:headers request-map)]]
+      (testing (pretty-demunge f)
+        (is (map? headers))
+        (is (every? (fn [header-name]
+                      (= (str/lower-case header-name) header-name))
+                    (keys headers)))))))
 
 (declare slingshots?)
 (defmethod assert-expr 'slingshots? [msg form]
