@@ -1,4 +1,4 @@
-## 0.9.5 (unreleased)
+## 0.10.0 (unreleased)
 
 **BREAKING**: Header names are now lowercase to comply with Ring Spec (1.5)
 - Changed "Location" header to "location" in redirect and creation responses
