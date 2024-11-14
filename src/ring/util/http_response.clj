@@ -50,7 +50,7 @@
   ([url] (created url nil))
   ([url body]
    {:status 201
-    :headers {"Location" url}
+    :headers {"location" url}
     :body body}))
 
 (defn accepted
@@ -128,7 +128,7 @@
   There are multiple options for the resource that the client may follow."
   ([url]
    {:status 300
-    :headers {"Location" url}
+    :headers {"location" url}
     :body ""}))
 
 (defn moved-permanently
@@ -136,7 +136,7 @@
   This and all future requests should be directed to the given URI."
   ([url]
    {:status 301
-    :headers {"Location" url}
+    :headers {"location" url}
     :body ""}))
 
 (defn found
@@ -144,7 +144,7 @@
   The resource was found but at a different URI."
   ([url]
    {:status 302
-    :headers {"Location" url}
+    :headers {"location" url}
     :body ""}))
 
 (defn see-other
@@ -152,7 +152,7 @@
   The response to the request can be found under another URI using a GET method."
   ([url]
    {:status 303
-    :headers {"Location" url}
+    :headers {"location" url}
     :body ""}))
 
 (defn not-modified
@@ -168,7 +168,7 @@
   This single request is to be repeated via the proxy given by the Location field."
   ([url]
    {:status 305
-    :headers {"Location" url}
+    :headers {"location" url}
     :body ""}))
 
 (defn temporary-redirect
@@ -176,7 +176,7 @@
   The request should be repeated with another URI but future requests can still use the original URI."
   ([url]
    {:status 307
-    :headers {"Location" url}
+    :headers {"location" url}
     :body ""}))
 
 (defn permanent-redirect
@@ -184,7 +184,7 @@
   The request and all future requests should be repeated using another URI."
   ([url]
    {:status 308
-    :headers {"Location" url}
+    :headers {"location" url}
     :body ""}))
 
 (defn bad-request
