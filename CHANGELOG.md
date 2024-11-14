@@ -1,6 +1,6 @@
 ## 0.9.5 (unreleased)
 
-**BREAKING**: Header names are now lowercase to comply with Ring spec
+**BREAKING**: Header names are now lowercase to comply with Ring Spec (1.5)
 - Changed "Location" header to "location" in redirect and creation responses
 
 ## 0.9.4 (29.6.2024)
