@@ -83,4 +83,360 @@
     (is (network-authentication-required? {:status 511}))
     (is (network-read-timeout? {:status 598}))
     (is (network-connect-timeout? {:status 599}))
-    (is (server-error? {:status 504}))))
+    (is (server-error? {:status 504})))
+
+  (testing "Must throw assertion error when `response` parameter does not pass `map?` pre-condition"
+    (is (thrown? AssertionError (informational? "not-map")))
+    (is (thrown? AssertionError (informational? :not-map)))
+    (is (thrown? AssertionError (informational? nil)))
+    (is (thrown? AssertionError (informational? 123)))
+
+    (is (thrown? AssertionError (success? "not-map")))
+    (is (thrown? AssertionError (success? :not-map)))
+    (is (thrown? AssertionError (success? nil)))
+    (is (thrown? AssertionError (success? 123)))
+
+    (is (thrown? AssertionError (redirection? "not-map")))
+    (is (thrown? AssertionError (redirection? :not-map)))
+    (is (thrown? AssertionError (redirection? nil)))
+    (is (thrown? AssertionError (redirection? 123)))
+
+    (is (thrown? AssertionError (client-error? "not-map")))
+    (is (thrown? AssertionError (client-error? :not-map)))
+    (is (thrown? AssertionError (client-error? nil)))
+    (is (thrown? AssertionError (client-error? 123)))
+
+    (is (thrown? AssertionError (server-error? "not-map")))
+    (is (thrown? AssertionError (server-error? :not-map)))
+    (is (thrown? AssertionError (server-error? nil)))
+    (is (thrown? AssertionError (server-error? 123)))
+
+    (is (thrown? AssertionError (continue? "not-map")))
+    (is (thrown? AssertionError (continue? :not-map)))
+    (is (thrown? AssertionError (continue? nil)))
+    (is (thrown? AssertionError (continue? 123)))
+
+    (is (thrown? AssertionError (switching-protocols? "not-map")))
+    (is (thrown? AssertionError (switching-protocols? :not-map)))
+    (is (thrown? AssertionError (switching-protocols? nil)))
+    (is (thrown? AssertionError (switching-protocols? 123)))
+
+    (is (thrown? AssertionError (processing? "not-map")))
+    (is (thrown? AssertionError (processing? :not-map)))
+    (is (thrown? AssertionError (processing? nil)))
+    (is (thrown? AssertionError (processing? 123)))
+
+    (is (thrown? AssertionError (ok? "not-map")))
+    (is (thrown? AssertionError (ok? :not-map)))
+    (is (thrown? AssertionError (ok? nil)))
+    (is (thrown? AssertionError (ok? 123)))
+
+    (is (thrown? AssertionError (created? "not-map")))
+    (is (thrown? AssertionError (created? :not-map)))
+    (is (thrown? AssertionError (created? nil)))
+    (is (thrown? AssertionError (created? 123)))
+
+    (is (thrown? AssertionError (accepted? "not-map")))
+    (is (thrown? AssertionError (accepted? :not-map)))
+    (is (thrown? AssertionError (accepted? nil)))
+    (is (thrown? AssertionError (accepted? 123)))
+
+    (is (thrown? AssertionError (non-authoritative-information? "not-map")))
+    (is (thrown? AssertionError (non-authoritative-information? :not-map)))
+    (is (thrown? AssertionError (non-authoritative-information? nil)))
+    (is (thrown? AssertionError (non-authoritative-information? 123)))
+
+    (is (thrown? AssertionError (no-content? "not-map")))
+    (is (thrown? AssertionError (no-content? :not-map)))
+    (is (thrown? AssertionError (no-content? nil)))
+    (is (thrown? AssertionError (no-content? 123)))
+
+    (is (thrown? AssertionError (reset-content? "not-map")))
+    (is (thrown? AssertionError (reset-content? :not-map)))
+    (is (thrown? AssertionError (reset-content? nil)))
+    (is (thrown? AssertionError (reset-content? 123)))
+
+    (is (thrown? AssertionError (partial-content? "not-map")))
+    (is (thrown? AssertionError (partial-content? :not-map)))
+    (is (thrown? AssertionError (partial-content? nil)))
+    (is (thrown? AssertionError (partial-content? 123)))
+
+    (is (thrown? AssertionError (multi-status? "not-map")))
+    (is (thrown? AssertionError (multi-status? :not-map)))
+    (is (thrown? AssertionError (multi-status? nil)))
+    (is (thrown? AssertionError (multi-status? 123)))
+
+    (is (thrown? AssertionError (already-reported? "not-map")))
+    (is (thrown? AssertionError (already-reported? :not-map)))
+    (is (thrown? AssertionError (already-reported? nil)))
+    (is (thrown? AssertionError (already-reported? 123)))
+
+    (is (thrown? AssertionError (im-used? "not-map")))
+    (is (thrown? AssertionError (im-used? :not-map)))
+    (is (thrown? AssertionError (im-used? nil)))
+    (is (thrown? AssertionError (im-used? 123)))
+
+    (is (thrown? AssertionError (multiple-choices? "not-map")))
+    (is (thrown? AssertionError (multiple-choices? :not-map)))
+    (is (thrown? AssertionError (multiple-choices? nil)))
+    (is (thrown? AssertionError (multiple-choices? 123)))
+
+    (is (thrown? AssertionError (moved-permanently? "not-map")))
+    (is (thrown? AssertionError (moved-permanently? :not-map)))
+    (is (thrown? AssertionError (moved-permanently? nil)))
+    (is (thrown? AssertionError (moved-permanently? 123)))
+
+    (is (thrown? AssertionError (found? "not-map")))
+    (is (thrown? AssertionError (found? :not-map)))
+    (is (thrown? AssertionError (found? nil)))
+    (is (thrown? AssertionError (found? 123)))
+
+    (is (thrown? AssertionError (see-other? "not-map")))
+    (is (thrown? AssertionError (see-other? :not-map)))
+    (is (thrown? AssertionError (see-other? nil)))
+    (is (thrown? AssertionError (see-other? 123)))
+
+    (is (thrown? AssertionError (not-modified? "not-map")))
+    (is (thrown? AssertionError (not-modified? :not-map)))
+    (is (thrown? AssertionError (not-modified? nil)))
+    (is (thrown? AssertionError (not-modified? 123)))
+
+    (is (thrown? AssertionError (use-proxy? "not-map")))
+    (is (thrown? AssertionError (use-proxy? :not-map)))
+    (is (thrown? AssertionError (use-proxy? nil)))
+    (is (thrown? AssertionError (use-proxy? 123)))
+
+    (is (thrown? AssertionError (temporary-redirect? "not-map")))
+    (is (thrown? AssertionError (temporary-redirect? :not-map)))
+    (is (thrown? AssertionError (temporary-redirect? nil)))
+    (is (thrown? AssertionError (temporary-redirect? 123)))
+
+    (is (thrown? AssertionError (permanent-redirect? "not-map")))
+    (is (thrown? AssertionError (permanent-redirect? :not-map)))
+    (is (thrown? AssertionError (permanent-redirect? nil)))
+    (is (thrown? AssertionError (permanent-redirect? 123)))
+
+    (is (thrown? AssertionError (bad-request? "not-map")))
+    (is (thrown? AssertionError (bad-request? :not-map)))
+    (is (thrown? AssertionError (bad-request? nil)))
+    (is (thrown? AssertionError (bad-request? 123)))
+
+    (is (thrown? AssertionError (unauthorized? "not-map")))
+    (is (thrown? AssertionError (unauthorized? :not-map)))
+    (is (thrown? AssertionError (unauthorized? nil)))
+    (is (thrown? AssertionError (unauthorized? 123)))
+
+    (is (thrown? AssertionError (payment-required? "not-map")))
+    (is (thrown? AssertionError (payment-required? :not-map)))
+    (is (thrown? AssertionError (payment-required? nil)))
+    (is (thrown? AssertionError (payment-required? 123)))
+
+    (is (thrown? AssertionError (forbidden? "not-map")))
+    (is (thrown? AssertionError (forbidden? :not-map)))
+    (is (thrown? AssertionError (forbidden? nil)))
+    (is (thrown? AssertionError (forbidden? 123)))
+
+    (is (thrown? AssertionError (not-found? "not-map")))
+    (is (thrown? AssertionError (not-found? :not-map)))
+    (is (thrown? AssertionError (not-found? nil)))
+    (is (thrown? AssertionError (not-found? 123)))
+
+    (is (thrown? AssertionError (method-not-allowed? "not-map")))
+    (is (thrown? AssertionError (method-not-allowed? :not-map)))
+    (is (thrown? AssertionError (method-not-allowed? nil)))
+    (is (thrown? AssertionError (method-not-allowed? 123)))
+
+    (is (thrown? AssertionError (not-acceptable? "not-map")))
+    (is (thrown? AssertionError (not-acceptable? :not-map)))
+    (is (thrown? AssertionError (not-acceptable? nil)))
+    (is (thrown? AssertionError (not-acceptable? 123)))
+
+    (is (thrown? AssertionError (proxy-authentication-required? "not-map")))
+    (is (thrown? AssertionError (proxy-authentication-required? :not-map)))
+    (is (thrown? AssertionError (proxy-authentication-required? nil)))
+    (is (thrown? AssertionError (proxy-authentication-required? 123)))
+
+    (is (thrown? AssertionError (request-timeout? "not-map")))
+    (is (thrown? AssertionError (request-timeout? :not-map)))
+    (is (thrown? AssertionError (request-timeout? nil)))
+    (is (thrown? AssertionError (request-timeout? 123)))
+
+    (is (thrown? AssertionError (conflict? "not-map")))
+    (is (thrown? AssertionError (conflict? :not-map)))
+    (is (thrown? AssertionError (conflict? nil)))
+    (is (thrown? AssertionError (conflict? 123)))
+
+    (is (thrown? AssertionError (gone? "not-map")))
+    (is (thrown? AssertionError (gone? :not-map)))
+    (is (thrown? AssertionError (gone? nil)))
+    (is (thrown? AssertionError (gone? 123)))
+
+    (is (thrown? AssertionError (length-required? "not-map")))
+    (is (thrown? AssertionError (length-required? :not-map)))
+    (is (thrown? AssertionError (length-required? nil)))
+    (is (thrown? AssertionError (length-required? 123)))
+
+    (is (thrown? AssertionError (precondition-failed? "not-map")))
+    (is (thrown? AssertionError (precondition-failed? :not-map)))
+    (is (thrown? AssertionError (precondition-failed? nil)))
+    (is (thrown? AssertionError (precondition-failed? 123)))
+
+    (is (thrown? AssertionError (request-entity-too-large? "not-map")))
+    (is (thrown? AssertionError (request-entity-too-large? :not-map)))
+    (is (thrown? AssertionError (request-entity-too-large? nil)))
+    (is (thrown? AssertionError (request-entity-too-large? 123)))
+
+    (is (thrown? AssertionError (request-uri-too-long? "not-map")))
+    (is (thrown? AssertionError (request-uri-too-long? :not-map)))
+    (is (thrown? AssertionError (request-uri-too-long? nil)))
+    (is (thrown? AssertionError (request-uri-too-long? 123)))
+
+    (is (thrown? AssertionError (unsupported-media-type? "not-map")))
+    (is (thrown? AssertionError (unsupported-media-type? :not-map)))
+    (is (thrown? AssertionError (unsupported-media-type? nil)))
+    (is (thrown? AssertionError (unsupported-media-type? 123)))
+
+    (is (thrown? AssertionError (requested-range-not-satisfiable? "not-map")))
+    (is (thrown? AssertionError (requested-range-not-satisfiable? :not-map)))
+    (is (thrown? AssertionError (requested-range-not-satisfiable? nil)))
+    (is (thrown? AssertionError (requested-range-not-satisfiable? 123)))
+
+    (is (thrown? AssertionError (expectation-failed? "not-map")))
+    (is (thrown? AssertionError (expectation-failed? :not-map)))
+    (is (thrown? AssertionError (expectation-failed? nil)))
+    (is (thrown? AssertionError (expectation-failed? 123)))
+
+    (is (thrown? AssertionError (im-a-teapot? "not-map")))
+    (is (thrown? AssertionError (im-a-teapot? :not-map)))
+    (is (thrown? AssertionError (im-a-teapot? nil)))
+    (is (thrown? AssertionError (im-a-teapot? 123)))
+
+    (is (thrown? AssertionError (enhance-your-calm? "not-map")))
+    (is (thrown? AssertionError (enhance-your-calm? :not-map)))
+    (is (thrown? AssertionError (enhance-your-calm? nil)))
+    (is (thrown? AssertionError (enhance-your-calm? 123)))
+
+    (is (thrown? AssertionError (unprocessable-entity? "not-map")))
+    (is (thrown? AssertionError (unprocessable-entity? :not-map)))
+    (is (thrown? AssertionError (unprocessable-entity? nil)))
+    (is (thrown? AssertionError (unprocessable-entity? 123)))
+
+    (is (thrown? AssertionError (locked? "not-map")))
+    (is (thrown? AssertionError (locked? :not-map)))
+    (is (thrown? AssertionError (locked? nil)))
+    (is (thrown? AssertionError (locked? 123)))
+
+    (is (thrown? AssertionError (failed-dependency? "not-map")))
+    (is (thrown? AssertionError (failed-dependency? :not-map)))
+    (is (thrown? AssertionError (failed-dependency? nil)))
+    (is (thrown? AssertionError (failed-dependency? 123)))
+
+    (is (thrown? AssertionError (unordered-collection? "not-map")))
+    (is (thrown? AssertionError (unordered-collection? :not-map)))
+    (is (thrown? AssertionError (unordered-collection? nil)))
+    (is (thrown? AssertionError (unordered-collection? 123)))
+
+    (is (thrown? AssertionError (upgrade-required? "not-map")))
+    (is (thrown? AssertionError (upgrade-required? :not-map)))
+    (is (thrown? AssertionError (upgrade-required? nil)))
+    (is (thrown? AssertionError (upgrade-required? 123)))
+
+    (is (thrown? AssertionError (precondition-required? "not-map")))
+    (is (thrown? AssertionError (precondition-required? :not-map)))
+    (is (thrown? AssertionError (precondition-required? nil)))
+    (is (thrown? AssertionError (precondition-required? 123)))
+
+    (is (thrown? AssertionError (too-many-requests? "not-map")))
+    (is (thrown? AssertionError (too-many-requests? :not-map)))
+    (is (thrown? AssertionError (too-many-requests? nil)))
+    (is (thrown? AssertionError (too-many-requests? 123)))
+
+    (is (thrown? AssertionError (request-header-fields-too-large? "not-map")))
+    (is (thrown? AssertionError (request-header-fields-too-large? :not-map)))
+    (is (thrown? AssertionError (request-header-fields-too-large? nil)))
+    (is (thrown? AssertionError (request-header-fields-too-large? 123)))
+
+    (is (thrown? AssertionError (retry-with? "not-map")))
+    (is (thrown? AssertionError (retry-with? :not-map)))
+    (is (thrown? AssertionError (retry-with? nil)))
+    (is (thrown? AssertionError (retry-with? 123)))
+
+    (is (thrown? AssertionError (blocked-by-windows-parental-controls? "not-map")))
+    (is (thrown? AssertionError (blocked-by-windows-parental-controls? :not-map)))
+    (is (thrown? AssertionError (blocked-by-windows-parental-controls? nil)))
+    (is (thrown? AssertionError (blocked-by-windows-parental-controls? 123)))
+
+    (is (thrown? AssertionError (unavailable-for-legal-reasons? "not-map")))
+    (is (thrown? AssertionError (unavailable-for-legal-reasons? :not-map)))
+    (is (thrown? AssertionError (unavailable-for-legal-reasons? nil)))
+    (is (thrown? AssertionError (unavailable-for-legal-reasons? 123)))
+
+    (is (thrown? AssertionError (internal-server-error? "not-map")))
+    (is (thrown? AssertionError (internal-server-error? :not-map)))
+    (is (thrown? AssertionError (internal-server-error? nil)))
+    (is (thrown? AssertionError (internal-server-error? 123)))
+
+    (is (thrown? AssertionError (not-implemented? "not-map")))
+    (is (thrown? AssertionError (not-implemented? :not-map)))
+    (is (thrown? AssertionError (not-implemented? nil)))
+    (is (thrown? AssertionError (not-implemented? 123)))
+
+    (is (thrown? AssertionError (bad-gateway? "not-map")))
+    (is (thrown? AssertionError (bad-gateway? :not-map)))
+    (is (thrown? AssertionError (bad-gateway? nil)))
+    (is (thrown? AssertionError (bad-gateway? 123)))
+
+    (is (thrown? AssertionError (service-unavailable? "not-map")))
+    (is (thrown? AssertionError (service-unavailable? :not-map)))
+    (is (thrown? AssertionError (service-unavailable? nil)))
+    (is (thrown? AssertionError (service-unavailable? 123)))
+
+    (is (thrown? AssertionError (gateway-timeout? "not-map")))
+    (is (thrown? AssertionError (gateway-timeout? :not-map)))
+    (is (thrown? AssertionError (gateway-timeout? nil)))
+    (is (thrown? AssertionError (gateway-timeout? 123)))
+
+    (is (thrown? AssertionError (http-version-not-supported? "not-map")))
+    (is (thrown? AssertionError (http-version-not-supported? :not-map)))
+    (is (thrown? AssertionError (http-version-not-supported? nil)))
+    (is (thrown? AssertionError (http-version-not-supported? 123)))
+
+    (is (thrown? AssertionError (variant-also-negotiates? "not-map")))
+    (is (thrown? AssertionError (variant-also-negotiates? :not-map)))
+    (is (thrown? AssertionError (variant-also-negotiates? nil)))
+    (is (thrown? AssertionError (variant-also-negotiates? 123)))
+
+    (is (thrown? AssertionError (insufficient-storage? "not-map")))
+    (is (thrown? AssertionError (insufficient-storage? :not-map)))
+    (is (thrown? AssertionError (insufficient-storage? nil)))
+    (is (thrown? AssertionError (insufficient-storage? 123)))
+
+    (is (thrown? AssertionError (loop-detected? "not-map")))
+    (is (thrown? AssertionError (loop-detected? :not-map)))
+    (is (thrown? AssertionError (loop-detected? nil)))
+    (is (thrown? AssertionError (loop-detected? 123)))
+
+    (is (thrown? AssertionError (bandwidth-limit-exceeded? "not-map")))
+    (is (thrown? AssertionError (bandwidth-limit-exceeded? :not-map)))
+    (is (thrown? AssertionError (bandwidth-limit-exceeded? nil)))
+    (is (thrown? AssertionError (bandwidth-limit-exceeded? 123)))
+
+    (is (thrown? AssertionError (not-extended? "not-map")))
+    (is (thrown? AssertionError (not-extended? :not-map)))
+    (is (thrown? AssertionError (not-extended? nil)))
+    (is (thrown? AssertionError (not-extended? 123)))
+
+    (is (thrown? AssertionError (network-authentication-required? "not-map")))
+    (is (thrown? AssertionError (network-authentication-required? :not-map)))
+    (is (thrown? AssertionError (network-authentication-required? nil)))
+    (is (thrown? AssertionError (network-authentication-required? 123)))
+
+    (is (thrown? AssertionError (network-read-timeout? "not-map")))
+    (is (thrown? AssertionError (network-read-timeout? :not-map)))
+    (is (thrown? AssertionError (network-read-timeout? nil)))
+    (is (thrown? AssertionError (network-read-timeout? 123)))
+
+    (is (thrown? AssertionError (network-connect-timeout? "not-map")))
+    (is (thrown? AssertionError (network-connect-timeout? :not-map)))
+    (is (thrown? AssertionError (network-connect-timeout? nil)))
+    (is (thrown? AssertionError (network-connect-timeout? 123)))))
