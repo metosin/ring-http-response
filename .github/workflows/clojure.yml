@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         # LTS and latest
-        jdk: [8,11,16]
+        jdk: [8, 11, 17, 21]
     name: "Clojure (Java ${{ matrix.jdk }})"
     runs-on: ubuntu-latest
     steps:

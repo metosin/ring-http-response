@@ -1,3 +1,12 @@
+## 0.9.5 (1.1.2025)
+
+- Fix pre-expr syntax [#34](https://github.com/metosin/ring-http-response/pull/34)
+- updated dependencies:
+
+```clojure
+[ring/ring-core "1.13.0"] is available but we use "1.12.2"
+```
+
 ## 0.9.4 (29.6.2024)
 
 - add teapot functionality [#33](https://github.com/metosin/ring-http-response/pull/33)
