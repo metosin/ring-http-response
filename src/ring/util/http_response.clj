@@ -1144,7 +1144,7 @@
 
 (defn network-read-timeout!
   "598 Network read timeout (ServerError)
-
+  
   Throws an exception with ex-info:
   {:type :ring.util.http-response/response
    :response response}"
@@ -1166,7 +1166,7 @@
 
 (defn network-connect-timeout!
   "599 Network connect timeout (ServerError)
-
+  
   Throws an exception with ex-info:
   {:type :ring.util.http-response/response
    :response response}"
