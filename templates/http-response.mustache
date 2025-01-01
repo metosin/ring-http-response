@@ -7,7 +7,7 @@
   {:type :ring.util.http-response/response
    :response response}"
   [response]
-  {:pre (map? response)}
+  {:pre [(map? response)]}
   (throw (ex-info (str "HTTP "(:status response)) {:type ::response :response response})))
 {{#template}}
 
