@@ -86,7 +86,9 @@ response wrapped in an `ExceptionInfo`.
 There is also a `throw!` function to throw any kind response in an exception.
 
 ```clojure
-(throw! (header (bad-request "body") "header" "value"))
+(require '[ring.util.http-response :as response])
+
+(response/throw! (response/header (response/bad-request "body") "header" "value"))
 ; clojure.lang.ExceptionInfo: throw: {:type :ring.util.http-response/response, :response {:status 400, :headers {"header" "value"}, :body "body"}}
 ```
 
