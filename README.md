@@ -74,10 +74,12 @@ All response functions for HTTP error response have a exception throwing sibling
 response wrapped in an `ExceptionInfo`.
 
 ```clojure
-(bad-request "fail")
+(require '[ring.util.http-response :as response])
+
+(response/bad-request "fail")
 ; {:status 400, :headers {}, :body "fail"}
 
-(bad-request! "fail")
+(response/bad-request! "fail")
 ; clojure.lang.ExceptionInfo: throw: {:type :ring.util.http-response/response, :response {:status 400, :headers {}, :body "fail"}}
 ```
 
